@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://components/chips/ChipBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/sprites/code_small.png" type="Texture" id=2]
+[ext_resource path="res://components/chips/ScriptChip/ScriptChip.gd" type="Script" id=3]
+
+[node name="ScriptChip" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="NinePatchRect" parent="ChipDesign" index="0"]
+region_rect = Rect2( 0, 0, 63.4489, 64 )
+
+[node name="Sprite" parent="ChipDesign" index="1"]
+visible = true
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 60, 58 )

@@ -1,0 +1,176 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "d",
+			"position": "(-416, -160)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "s0",
+			"position": "(-352, 32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Led",
+			"label": "d0",
+			"position": "(160, -160)",
+			"complex_use": "CHIP_OUTPUT"
+		},
+		{
+			"id": 3,
+			"type": "Led",
+			"label": "d1",
+			"position": "(160, -240)",
+			"complex_use": "CHIP_OUTPUT"
+		},
+		{
+			"id": 4,
+			"type": "Led",
+			"label": "d2",
+			"position": "(160, -320)",
+			"complex_use": "CHIP_OUTPUT"
+		},
+		{
+			"id": 5,
+			"type": "Led",
+			"label": "d3",
+			"position": "(160, -400)",
+			"complex_use": "CHIP_OUTPUT"
+		},
+		{
+			"id": 6,
+			"type": "Button",
+			"label": "s1",
+			"position": "(-416, -32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		}
+	],
+	"chips": [
+		{
+			"id": 7,
+			"type": "ComplexChip",
+			"position": "(0, -160)",
+			"path": "multiplex/demux (2ch).chip"
+		},
+		{
+			"id": 8,
+			"type": "ComplexChip",
+			"position": "(0, -320)",
+			"path": "multiplex/demux (2ch).chip"
+		},
+		{
+			"id": 9,
+			"type": "ComplexChip",
+			"position": "(-224, -224)",
+			"path": "multiplex/demux (2ch).chip"
+		}
+	],
+	"connections": [
+		{
+			"from": 7,
+			"from_index": 1,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+				"(64, -160)",
+				"(64, -224)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 1,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+				"(64, -320)",
+				"(64, -384)"
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 1,
+			"to": 8,
+			"to_index": 1,
+			"corners": [
+				"(-112, -224)",
+				"(-112, -320)"
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 1,
+			"corners": [
+				"(-112, -208)",
+				"(-112, -160)"
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 1,
+			"corners": [
+				"(-336, -144)",
+				"(-336, -224)"
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0,
+			"corners": [
+				"(-288, -16)",
+				"(-288, -208)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0,
+			"corners": [
+				"(-64, 48)",
+				"(-64, -304)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+				"(-64, 48)",
+				"(-64, -144)"
+			]
+		}
+	]
+}

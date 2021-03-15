@@ -1,0 +1,147 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "B",
+			"position": "(-176, -64)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 7,
+			"type": "Led",
+			"label": "L",
+			"position": "(624, -80)",
+			"complex_use": "CHIP_OUTPUT"
+		}
+	],
+	"chips": [
+		{
+			"id": 1,
+			"type": "ScriptChip",
+			"position": "(-48, -64)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 2,
+			"type": "ScriptChip",
+			"position": "(80, -64)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 3,
+			"type": "ScriptChip",
+			"position": "(208, -80)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 2
+				}
+			]
+		},
+		{
+			"id": 4,
+			"type": "ScriptChip",
+			"position": "(336, -80)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(448, -80)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 6,
+			"type": "ScriptChip",
+			"position": "(304, -224)",
+			"path": "Conversor",
+			"properties": [
+				{
+					"name": "from",
+					"value": 0
+				},
+				{
+					"name": "to",
+					"value": 1
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 0
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 1,
+			"to_index": 0
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 1
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0
+		}
+	]
+}

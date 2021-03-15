@@ -1,0 +1,277 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "d0",
+			"position": "(-416, -32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "d1",
+			"position": "(-416, -96)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "s2",
+			"position": "(-32, 32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 3,
+			"type": "Led",
+			"label": "q",
+			"position": "(416, -224)",
+			"complex_use": "CHIP_OUTPUT"
+		},
+		{
+			"id": 4,
+			"type": "Button",
+			"label": "d2",
+			"position": "(-416, -160)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 5,
+			"type": "Button",
+			"label": "d3",
+			"position": "(-416, -224)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 6,
+			"type": "Button",
+			"label": "s1",
+			"position": "(-192, 96)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 11,
+			"type": "Button",
+			"label": "s0",
+			"position": "(-416, 160)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 12,
+			"type": "Button",
+			"label": "d4",
+			"position": "(-416, -288)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 13,
+			"type": "Button",
+			"label": "d5",
+			"position": "(-416, -352)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 14,
+			"type": "Button",
+			"label": "d6",
+			"position": "(-416, -416)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 15,
+			"type": "Button",
+			"label": "d7",
+			"position": "(-416, -480)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		}
+	],
+	"chips": [
+		{
+			"id": 7,
+			"type": "ComplexChip",
+			"position": "(-32, -96)",
+			"path": "multiplex/mux (2ch).chip"
+		},
+		{
+			"id": 8,
+			"type": "ComplexChip",
+			"position": "(-192, -96)",
+			"path": "multiplex/mux (2ch).chip"
+		},
+		{
+			"id": 9,
+			"type": "ComplexChip",
+			"position": "(-192, -192)",
+			"path": "multiplex/mux (2ch).chip"
+		},
+		{
+			"id": 10,
+			"type": "ComplexChip",
+			"position": "(128, -224)",
+			"path": "multiplex/mux (2ch).chip"
+		},
+		{
+			"id": 16,
+			"type": "ComplexChip",
+			"position": "(-32, -352)",
+			"path": "multiplex/mux (2ch).chip"
+		},
+		{
+			"id": 17,
+			"type": "ComplexChip",
+			"position": "(-192, -352)",
+			"path": "multiplex/mux (2ch).chip"
+		},
+		{
+			"id": 18,
+			"type": "ComplexChip",
+			"position": "(-192, -448)",
+			"path": "multiplex/mux (2ch).chip"
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 1
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 2
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 1
+		},
+		{
+			"from": 10,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 0
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 1
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 2
+		},
+		{
+			"from": 17,
+			"from_index": 0,
+			"to": 16,
+			"to_index": 1
+		},
+		{
+			"from": 15,
+			"from_index": 0,
+			"to": 18,
+			"to_index": 2
+		},
+		{
+			"from": 18,
+			"from_index": 0,
+			"to": 16,
+			"to_index": 2
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 17,
+			"to_index": 0
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 18,
+			"to_index": 0
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 2
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 1
+		},
+		{
+			"from": 14,
+			"from_index": 0,
+			"to": 18,
+			"to_index": 1
+		},
+		{
+			"from": 12,
+			"from_index": 0,
+			"to": 17,
+			"to_index": 1
+		},
+		{
+			"from": 13,
+			"from_index": 0,
+			"to": 17,
+			"to_index": 2
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 16,
+			"to_index": 0
+		},
+		{
+			"from": 16,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 2
+		}
+	]
+}

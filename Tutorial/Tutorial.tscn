@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/typerighter-16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Tutorial/Tutorial.gd" type="Script" id=2]
+[ext_resource path="res://Tutorial/TextPanel.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0675, 0.25, 0.23175, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Tutorial" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextPanel" type="Panel" parent="."]
+visible = false
+margin_left = 185.069
+margin_top = 103.915
+margin_right = 311.09
+margin_bottom = 186.915
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 63, 41 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 5 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextPanel"]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 79, 7 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "First do this then do that"

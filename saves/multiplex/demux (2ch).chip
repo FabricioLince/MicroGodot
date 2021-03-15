@@ -1,0 +1,141 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "d",
+			"position": "(-336, -176)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "s",
+			"position": "(-336, -96)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Led",
+			"label": "d0",
+			"position": "(96, -160)",
+			"complex_use": "CHIP_OUTPUT"
+		},
+		{
+			"id": 3,
+			"type": "Led",
+			"label": "d1",
+			"position": "(96, -288)",
+			"complex_use": "CHIP_OUTPUT"
+		}
+	],
+	"chips": [
+		{
+			"id": 4,
+			"type": "ScriptChip",
+			"position": "(-32, -160)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(-32, -288)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 6,
+			"type": "ScriptChip",
+			"position": "(-160, -112)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+				"(-256, -80)",
+				"(-256, -272)"
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 1,
+			"corners": [
+				"(-272, -160)",
+				"(-272, -288)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+				"(-256, -80)",
+				"(-256, -112)"
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+				"(-96, -112)",
+				"(-96, -144)"
+			]
+		}
+	]
+}

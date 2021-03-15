@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/propertypanels/PanelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gui/propertypanels/DropDown.gd" type="Script" id=2]
+
+[node name="DropDown" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 47.0
+
+[node name="Label" type="Label" parent="VBoxContainer" index="0"]
+margin_right = 186.0
+margin_bottom = 14.0
+text = "Select"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer" index="1"]
+margin_top = 18.0
+margin_right = 186.0
+margin_bottom = 38.0
+[connection signal="item_selected" from="VBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]

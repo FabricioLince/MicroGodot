@@ -1,0 +1,164 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "d0",
+			"position": "(-416, -48)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "d1",
+			"position": "(-416, -176)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "s0",
+			"position": "(-416, 96)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 3,
+			"type": "Led",
+			"label": "q",
+			"position": "(160, -96)",
+			"complex_use": "CHIP_OUTPUT"
+		}
+	],
+	"chips": [
+		{
+			"id": 4,
+			"type": "ScriptChip",
+			"position": "(-160, -160)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(-160, -32)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 6,
+			"type": "ScriptChip",
+			"position": "(-288, 32)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 7,
+			"type": "ScriptChip",
+			"position": "(32, -96)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 1
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+				"(-352, 112)",
+				"(-352, 32)"
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+				"(-224, 32)",
+				"(-224, -16)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+				"(-352, 112)",
+				"(-352, -144)"
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 1,
+			"corners": [
+				"(-80, -144)",
+				"(-80, -96)"
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+				"(-80, -16)",
+				"(-80, -80)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+
+			]
+		}
+	]
+}

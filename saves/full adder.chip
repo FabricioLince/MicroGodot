@@ -1,0 +1,176 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "B",
+			"position": "(89, 96)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "A",
+			"position": "(89, 192)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "CIN",
+			"position": "(89, 288)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 3,
+			"type": "Led",
+			"label": "COUT",
+			"position": "(633.884277, 136.363617)"
+		},
+		{
+			"id": 4,
+			"type": "Led",
+			"label": "SUM",
+			"position": "(633.884277, 215.702454)"
+		}
+	],
+	"chips": [
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(249, 96)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 6,
+			"type": "ScriptChip",
+			"position": "(249, 192)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 2
+				}
+			]
+		},
+		{
+			"id": 7,
+			"type": "ScriptChip",
+			"position": "(377, 160)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 8,
+			"type": "ScriptChip",
+			"position": "(377, 256)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 2
+				}
+			]
+		},
+		{
+			"id": 9,
+			"type": "ScriptChip",
+			"position": "(505, 96)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 1
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 1
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 1
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 1
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 1
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 1
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0
+		}
+	]
+}

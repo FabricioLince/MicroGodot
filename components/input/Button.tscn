@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://components/Component.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/input/Button.gd" type="Script" id=2]
+[ext_resource path="res://components/sprites/Button Pressed.png" type="Texture" id=3]
+[ext_resource path="res://components/sprites/Button Unpressed.png" type="Texture" id=4]
+
+[node name="Button" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprites" type="Node2D" parent="." index="2"]
+
+[node name="Pressed" type="Sprite" parent="Sprites" index="0"]
+texture = ExtResource( 3 )
+
+[node name="Unpressed" type="Sprite" parent="Sprites" index="1"]
+texture = ExtResource( 4 )
+
+[node name="Connectors" parent="." index="4"]
+position = Vector2( 0, 16 )

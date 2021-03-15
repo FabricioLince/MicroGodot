@@ -1,0 +1,252 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://sprites/square.png" type="Texture" id=1]
+[ext_resource path="res://gui/InfoPanel.gd" type="Script" id=2]
+[ext_resource path="res://Mouse.gd" type="Script" id=3]
+[ext_resource path="res://Theme.tres" type="Theme" id=4]
+[ext_resource path="res://Board.gd" type="Script" id=5]
+[ext_resource path="res://Editor.gd" type="Script" id=6]
+[ext_resource path="res://ConnectionCreator.gd" type="Script" id=7]
+[ext_resource path="res://Background.gd" type="Script" id=8]
+[ext_resource path="res://CanvasLayer.gd" type="Script" id=9]
+[ext_resource path="res://gui/FileDialog.gd" type="Script" id=10]
+[ext_resource path="res://mainmenu/InsertMenu.gd" type="Script" id=11]
+[ext_resource path="res://mainmenu/FileMenu.gd" type="Script" id=12]
+[ext_resource path="res://icons/trash.png" type="Texture" id=13]
+[ext_resource path="res://Camera.gd" type="Script" id=14]
+[ext_resource path="res://DesignManager.gd" type="Script" id=15]
+[ext_resource path="res://gui/PopupDialog.gd" type="Script" id=16]
+[ext_resource path="res://Selector.gd" type="Script" id=17]
+[ext_resource path="res://SelectionLineGradient.tres" type="Gradient" id=18]
+[ext_resource path="res://icons/chip.png" type="Texture" id=19]
+[ext_resource path="res://mainmenu/HelpMenu.gd" type="Script" id=20]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.0
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="InputEventKey" id=3]
+control = true
+command = true
+pressed = true
+scancode = 16777224
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[node name="Editor" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="BG" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.32549 )
+z_index = -999
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 192, 192 )
+region_filter_clip = true
+script = ExtResource( 8 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 14 )
+
+[node name="Board" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Mouse" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Line2D" type="Line2D" parent="Mouse"]
+width = 8.0
+script = ExtResource( 7 )
+
+[node name="CursorArea" type="Area2D" parent="Mouse"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/CursorArea"]
+shape = SubResource( 1 )
+
+[node name="DesignManager" type="Node2D" parent="."]
+script = ExtResource( 15 )
+
+[node name="Selector" type="Node2D" parent="."]
+script = ExtResource( 17 )
+
+[node name="Line2D" type="Line2D" parent="Selector"]
+z_index = 10
+width = 5.0
+gradient = ExtResource( 18 )
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="Selector"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selector/Area2D"]
+shape = SubResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Selector"]
+visible = false
+polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0 )
+vertex_colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0.309804, 0, 0, 0, 1, 0, 0, 0, 0.45098 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 9 )
+theme = ExtResource( 4 )
+
+[node name="InfoPanel" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -39.5
+margin_bottom = 39.5
+grow_horizontal = 0
+grow_vertical = 2
+rect_min_size = Vector2( 200, 0 )
+theme = ExtResource( 4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="PanelContainer" parent="CanvasLayer/InfoPanel"]
+margin_right = 200.0
+margin_bottom = 33.0
+
+[node name="Label" type="Label" parent="CanvasLayer/InfoPanel/Title"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 26.0
+text = "No Title"
+
+[node name="Properties" type="VBoxContainer" parent="CanvasLayer/InfoPanel"]
+margin_top = 37.0
+margin_right = 200.0
+margin_bottom = 37.0
+
+[node name="DeleteButton" type="Button" parent="CanvasLayer/InfoPanel"]
+margin_top = 41.0
+margin_right = 200.0
+margin_bottom = 79.0
+shortcut = SubResource( 4 )
+text = "DELETE"
+icon = ExtResource( 13 )
+
+[node name="TopBar" type="VBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_bottom = 24.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitlePanel" type="Panel" parent="CanvasLayer/TopBar"]
+visible = false
+margin_right = 512.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="Label" type="Label" parent="CanvasLayer/TopBar/TitlePanel"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 512.0
+margin_bottom = 23.0
+text = "Title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="HBoxContainer" parent="CanvasLayer/TopBar"]
+margin_right = 1200.0
+margin_bottom = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileMenu" type="MenuButton" parent="CanvasLayer/TopBar/MainMenu"]
+margin_right = 41.0
+margin_bottom = 25.0
+text = "File"
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InsertMenu" type="MenuButton" parent="CanvasLayer/TopBar/MainMenu"]
+margin_left = 45.0
+margin_right = 106.0
+margin_bottom = 25.0
+text = "Insert"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpMenu" type="MenuButton" parent="CanvasLayer/TopBar/MainMenu"]
+margin_left = 110.0
+margin_right = 156.0
+margin_bottom = 25.0
+text = "Help"
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/TopBar"]
+visible = false
+margin_top = 29.0
+margin_right = 512.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
+margin_right = 500.0
+margin_bottom = 461.0
+theme = ExtResource( 4 )
+custom_icons/file = ExtResource( 19 )
+resizable = true
+access = 2
+filters = PoolStringArray( "*.chip ; Chip Files" )
+current_dir = "/Users/fabri/OneDrive/Documentos/Godot/Projects/Micro"
+current_path = "/Users/fabri/OneDrive/Documentos/Godot/Projects/Micro/"
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupDialog" type="AcceptDialog" parent="CanvasLayer"]
+margin_right = 83.0
+margin_bottom = 58.0
+popup_exclusive = true
+script = ExtResource( 16 )
+
+[node name="ZoomLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -14.0
+grow_horizontal = 0
+text = "1x"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InsertPopup" type="PopupMenu" parent="CanvasLayer"]
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="ContextMenu" type="PopupMenu" parent="CanvasLayer"]
+margin_right = 20.0
+margin_bottom = 20.0
+[connection signal="pressed" from="CanvasLayer/InfoPanel/DeleteButton" to="CanvasLayer/InfoPanel" method="_on_DeleteButton_pressed"]
+[connection signal="confirmed" from="CanvasLayer/PopupDialog" to="CanvasLayer/PopupDialog" method="_on_AcceptDialog_confirmed"]
+[connection signal="custom_action" from="CanvasLayer/PopupDialog" to="CanvasLayer/PopupDialog" method="_on_AcceptDialog_custom_action"]
+[connection signal="popup_hide" from="CanvasLayer/PopupDialog" to="CanvasLayer/PopupDialog" method="_on_AcceptDialog_popup_hide"]

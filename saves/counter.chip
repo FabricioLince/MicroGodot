@@ -1,0 +1,128 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexDisplay",
+			"label": "count",
+			"position": "(162, 13)",
+			"bits": 16,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "reset",
+			"position": "(-173, -81)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "clock on",
+			"position": "(-304, 32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 3,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(144, -80)",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 7,
+			"type": "HexInput",
+			"label": "interval",
+			"position": "(-288, -208)",
+			"complex_use": "CHIP_INPUT",
+			"value": 0,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 4,
+			"type": "ScriptChip",
+			"position": "(-16, 0)",
+			"path": "Counter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 3
+				}
+			]
+		},
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(-160, 16)",
+			"path": "Clock"
+		},
+		{
+			"id": 6,
+			"type": "ScriptChip",
+			"position": "(-16, -96)",
+			"path": "Counter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 1
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 0,
+			"to_index": 0
+		},
+		{
+			"from": 4,
+			"from_index": 16,
+			"to": 6,
+			"to_index": 0
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 1
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 1
+		}
+	]
+}

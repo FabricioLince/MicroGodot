@@ -1,0 +1,54 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Object",
+"class": "SerializerHelper",
+"language": "GDScript",
+"path": "res://Serializers/SerializerHelper.gd"
+}, {
+"base": "Object",
+"class": "Signal",
+"language": "GDScript",
+"path": "res://scripts/Signal.gd"
+} ]
+_global_script_class_icons={
+"SerializerHelper": "",
+"Signal": ""
+}
+
+[application]
+
+config/name="Micro"
+run/main_scene="res://Canvas.tscn"
+config/icon="res://components/sprites/chip_m.png"
+config/windows_native_icon="res://icons/chip_m.ico"
+
+[autoload]
+
+Global="*res://singletons/Global.gd"
+Keyboard="*res://singletons/Keyboard.gd"
+Instantiator="*res://singletons/Instantiator.gd"
+ContextMenuCreator="*res://singletons/ContextMenuCreator.gd"
+FileCache="*res://singletons/FileCache.gd"
+
+[display]
+
+window/size/width=1200
+window/vsync/use_vsync=false
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+threads/thread_model=2
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.0627, 0.13908, 0.19, 1 )
+environment/default_environment="res://default_env.tres"

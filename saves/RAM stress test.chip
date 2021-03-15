@@ -1,0 +1,261 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-656, -336)",
+			"complex_use": "CHIP_INPUT",
+			"value": 32,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(-192, -272)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "TWOS_COMPLEMENT"
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "B",
+			"position": "(-528, -416)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 3,
+			"type": "Button",
+			"label": "B",
+			"position": "(-672, -32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 4,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(-272, -144)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "TWOS_COMPLEMENT"
+		},
+		{
+			"id": 5,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-896, -384)",
+			"complex_use": "CHIP_INPUT",
+			"value": 1,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 6,
+			"type": "Button",
+			"label": "B",
+			"position": "(-944, -160)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		}
+	],
+	"chips": [
+		{
+			"id": 7,
+			"type": "ComplexChip",
+			"position": "(-416, -288)",
+			"path": "ALU (8bits).chip"
+		},
+		{
+			"id": 8,
+			"type": "ComplexChip",
+			"position": "(-416, -160)",
+			"path": "RAM (16x8).chip"
+		},
+		{
+			"id": 9,
+			"type": "ScriptChip",
+			"position": "(-576, -176)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				},
+				{
+					"name": "Input Bits",
+					"value": 2
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 10,
+			"type": "ScriptChip",
+			"position": "(-800, -144)",
+			"path": "Counter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 11,
+			"type": "ScriptChip",
+			"position": "(-848, -288)",
+			"path": "Clock"
+		},
+		{
+			"id": 12,
+			"type": "ScriptChip",
+			"position": "(-560, -64)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 8,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 1,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 16,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 5,
+			"corners": [
+				"(-336, -272)",
+				"(-336, -208)",
+				"(-480, -208)",
+				"(-480, -176)"
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 11,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 12,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 12,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 12,
+			"to_index": 0,
+			"corners": [
+
+			]
+		}
+	]
+}

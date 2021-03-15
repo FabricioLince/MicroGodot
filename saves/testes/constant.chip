@@ -1,0 +1,137 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "B",
+			"position": "(-32, -32)",
+			"complex_use": "CONSTANT",
+			"state": 0
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "B",
+			"position": "(-32, 64)",
+			"complex_use": "CONSTANT",
+			"state": 1
+		},
+		{
+			"id": 3,
+			"type": "Led",
+			"label": "L",
+			"position": "(352, -16)",
+			"complex_use": "CHIP_OUTPUT"
+		},
+		{
+			"id": 4,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-16, 160)",
+			"complex_use": "CONSTANT",
+			"value": 5,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 6,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(352, 96)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 7,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(352, 176)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 2,
+			"type": "ScriptChip",
+			"position": "(160, -32)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(160, 96)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+
+			]
+		}
+	]
+}

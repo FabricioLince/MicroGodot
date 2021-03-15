@@ -1,0 +1,131 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "B",
+			"position": "(-512, -224)",
+			"complex_use": "CHIP_INPUT",
+			"value": -18,
+			"bits": 8,
+			"show_value_as": "TWOS_COMPLEMENT"
+		},
+		{
+			"id": 1,
+			"type": "HexDisplay",
+			"label": "result",
+			"position": "(48, -64)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "TWOS_COMPLEMENT"
+		},
+		{
+			"id": 2,
+			"type": "Led",
+			"label": "L",
+			"position": "(48, -144)",
+			"complex_use": "IGNORE"
+		},
+		{
+			"id": 3,
+			"type": "HexInput",
+			"label": "A",
+			"position": "(-512, -128)",
+			"complex_use": "CHIP_INPUT",
+			"value": 85,
+			"bits": 8,
+			"show_value_as": "TWOS_COMPLEMENT"
+		},
+		{
+			"id": 4,
+			"type": "Button",
+			"label": "SUB",
+			"position": "(-512, -368)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		}
+	],
+	"chips": [
+		{
+			"id": 5,
+			"type": "ComplexChip",
+			"position": "(-96, -128)",
+			"path": "8 bit adder"
+		},
+		{
+			"id": 6,
+			"type": "ComplexChip",
+			"position": "(-288, -224)",
+			"path": "invert if (8bits)"
+		}
+	],
+	"connections": [
+		{
+			"from": 5,
+			"from_index": 8,
+			"to": 2,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 1,
+			"to_index": 0,
+			"corners": [
+				"(-16, -112)",
+				"(-16, -64)"
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+				"(-416, -352)",
+				"(-416, -208)"
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+				"(-416, -352)",
+				"(-416, -112)"
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 9,
+			"corners": [
+				"(-192, -208)",
+				"(-192, -144)"
+			]
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 1,
+			"corners": [
+
+			]
+		}
+	]
+}

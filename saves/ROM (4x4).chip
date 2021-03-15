@@ -1,0 +1,167 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-160, -80)",
+			"complex_use": "CONSTANT",
+			"value": 4,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-112, -32)",
+			"complex_use": "CONSTANT",
+			"value": 3,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 2,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-64, 16)",
+			"complex_use": "CONSTANT",
+			"value": 2,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 3,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-16, 64)",
+			"complex_use": "CONSTANT",
+			"value": 1,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 4,
+			"type": "HexInput",
+			"label": "addr",
+			"position": "(48, 176)",
+			"complex_use": "CHIP_INPUT",
+			"value": 4,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 6,
+			"type": "HexDisplay",
+			"label": "data",
+			"position": "(480, -16)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 5,
+			"type": "ComplexChip",
+			"position": "(288, -64)",
+			"path": "multiplex/mux (4ch 4bits).chip"
+		},
+		{
+			"id": 7,
+			"type": "ScriptChip",
+			"position": "(160, 144)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 0
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 2,
+			"corners": [
+				"(208, -48)"
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 6,
+			"corners": [
+				"(208, -64)"
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 14,
+			"corners": [
+				"(208, -96)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 10,
+			"corners": [
+				"(208, -80)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 1,
+			"to": 5,
+			"to_index": 1,
+			"corners": [
+				"(208, 160)",
+				"(208, -32)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+				"(224, 176)",
+				"(224, -16)"
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+
+			]
+		}
+	]
+}

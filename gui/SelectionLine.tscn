@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SelectionLineGradient.tres" type="Gradient" id=1]
+[ext_resource path="res://gui/SelectionLine.gd" type="Script" id=2]
+
+[node name="SelectionLine" type="Line2D"]
+visible = false
+width = 4.0
+gradient = ExtResource( 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource( 2 )

@@ -1,0 +1,202 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "data",
+			"position": "(-544, -240)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "write",
+			"position": "(-544, -32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Led",
+			"label": "wata",
+			"position": "(256, -208)",
+			"complex_use": "CHIP_OUTPUT"
+		}
+	],
+	"chips": [
+		{
+			"id": 3,
+			"type": "ComplexChip",
+			"position": "(-48, -208)",
+			"path": "nor"
+		},
+		{
+			"id": 4,
+			"type": "ComplexChip",
+			"position": "(-48, -16)",
+			"path": "nor"
+		},
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(64, -192)",
+			"path": "Conversor",
+			"properties": [
+				{
+					"name": "from",
+					"value": 0
+				},
+				{
+					"name": "to",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 6,
+			"type": "ScriptChip",
+			"position": "(-224, -224)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 7,
+			"type": "ScriptChip",
+			"position": "(-224, -16)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 8,
+			"type": "ScriptChip",
+			"position": "(-384, -224)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+				"(32, 0)",
+				"(32, -128)",
+				"(-128, -128)",
+				"(-128, -192)"
+			]
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 1,
+			"corners": [
+				"(128, -192)",
+				"(128, -64)",
+				"(-128, -64)",
+				"(-128, -16)"
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+				"(-448, -224)",
+				"(-448, 0)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+				"(-288, -16)",
+				"(-288, -208)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 1,
+			"corners": [
+
+			]
+		}
+	]
+}

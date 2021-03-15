@@ -1,0 +1,414 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "d",
+			"position": "(-528, -416)",
+			"complex_use": "CHIP_INPUT",
+			"value": 1,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "HexDisplay",
+			"label": "d3",
+			"position": "(288, -64)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 2,
+			"type": "HexDisplay",
+			"label": "d2",
+			"position": "(288, 16)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 3,
+			"type": "HexDisplay",
+			"label": "d1",
+			"position": "(288, 96)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 4,
+			"type": "HexDisplay",
+			"label": "d0",
+			"position": "(288, 176)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 5,
+			"type": "HexInput",
+			"label": "s",
+			"position": "(-544, -224)",
+			"complex_use": "CHIP_INPUT",
+			"value": 0,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 6,
+			"type": "HexDisplay",
+			"label": "d7",
+			"position": "(288, -384)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 7,
+			"type": "HexDisplay",
+			"label": "d6",
+			"position": "(288, -304)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 8,
+			"type": "HexDisplay",
+			"label": "d5",
+			"position": "(288, -224)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 9,
+			"type": "HexDisplay",
+			"label": "d4",
+			"position": "(288, -144)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 10,
+			"type": "HexDisplay",
+			"label": "dB",
+			"position": "(288, -704)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 11,
+			"type": "HexDisplay",
+			"label": "dA",
+			"position": "(288, -624)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 12,
+			"type": "HexDisplay",
+			"label": "d9",
+			"position": "(288, -544)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 13,
+			"type": "HexDisplay",
+			"label": "d8",
+			"position": "(288, -464)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 14,
+			"type": "HexDisplay",
+			"label": "dF",
+			"position": "(288, -1024)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 15,
+			"type": "HexDisplay",
+			"label": "dE",
+			"position": "(288, -944)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 16,
+			"type": "HexDisplay",
+			"label": "dD",
+			"position": "(288, -864)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 17,
+			"type": "HexDisplay",
+			"label": "dC",
+			"position": "(288, -784)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 18,
+			"type": "ComplexChip",
+			"position": "(-352, -416)",
+			"path": "multiplex/demux (4ch 8bits).chip"
+		},
+		{
+			"id": 19,
+			"type": "ScriptChip",
+			"position": "(-432, -224)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 20,
+			"type": "ComplexChip",
+			"position": "(-32, 32)",
+			"path": "multiplex/demux (4ch 8bits).chip"
+		},
+		{
+			"id": 21,
+			"type": "ComplexChip",
+			"position": "(-32, -96)",
+			"path": "multiplex/demux (4ch 8bits).chip"
+		},
+		{
+			"id": 22,
+			"type": "ComplexChip",
+			"position": "(-16, -608)",
+			"path": "multiplex/demux (4ch 8bits).chip"
+		},
+		{
+			"id": 23,
+			"type": "ComplexChip",
+			"position": "(-16, -736)",
+			"path": "multiplex/demux (4ch 8bits).chip"
+		}
+	],
+	"connections": [
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 19,
+			"to_index": 0
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 18,
+			"to_index": 2
+		},
+		{
+			"from": 18,
+			"from_index": 0,
+			"to": 20,
+			"to_index": 2
+		},
+		{
+			"from": 19,
+			"from_index": 2,
+			"to": 18,
+			"to_index": 0
+		},
+		{
+			"from": 19,
+			"from_index": 3,
+			"to": 18,
+			"to_index": 1
+		},
+		{
+			"from": 19,
+			"from_index": 1,
+			"to": 20,
+			"to_index": 1
+		},
+		{
+			"from": 19,
+			"from_index": 0,
+			"to": 20,
+			"to_index": 0
+		},
+		{
+			"from": 20,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0
+		},
+		{
+			"from": 20,
+			"from_index": 8,
+			"to": 3,
+			"to_index": 0
+		},
+		{
+			"from": 20,
+			"from_index": 16,
+			"to": 2,
+			"to_index": 0
+		},
+		{
+			"from": 20,
+			"from_index": 24,
+			"to": 1,
+			"to_index": 0
+		},
+		{
+			"from": 21,
+			"from_index": 24,
+			"to": 6,
+			"to_index": 0
+		},
+		{
+			"from": 21,
+			"from_index": 16,
+			"to": 7,
+			"to_index": 0
+		},
+		{
+			"from": 21,
+			"from_index": 8,
+			"to": 8,
+			"to_index": 0
+		},
+		{
+			"from": 21,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0
+		},
+		{
+			"from": 18,
+			"from_index": 8,
+			"to": 21,
+			"to_index": 2
+		},
+		{
+			"from": 19,
+			"from_index": 1,
+			"to": 21,
+			"to_index": 1
+		},
+		{
+			"from": 19,
+			"from_index": 0,
+			"to": 21,
+			"to_index": 0
+		},
+		{
+			"from": 22,
+			"from_index": 24,
+			"to": 10,
+			"to_index": 0
+		},
+		{
+			"from": 22,
+			"from_index": 16,
+			"to": 11,
+			"to_index": 0
+		},
+		{
+			"from": 22,
+			"from_index": 8,
+			"to": 12,
+			"to_index": 0
+		},
+		{
+			"from": 22,
+			"from_index": 0,
+			"to": 13,
+			"to_index": 0
+		},
+		{
+			"from": 23,
+			"from_index": 24,
+			"to": 14,
+			"to_index": 0
+		},
+		{
+			"from": 23,
+			"from_index": 16,
+			"to": 15,
+			"to_index": 0
+		},
+		{
+			"from": 23,
+			"from_index": 8,
+			"to": 16,
+			"to_index": 0
+		},
+		{
+			"from": 23,
+			"from_index": 0,
+			"to": 17,
+			"to_index": 0
+		},
+		{
+			"from": 18,
+			"from_index": 16,
+			"to": 22,
+			"to_index": 2
+		},
+		{
+			"from": 18,
+			"from_index": 24,
+			"to": 23,
+			"to_index": 2
+		},
+		{
+			"from": 19,
+			"from_index": 0,
+			"to": 22,
+			"to_index": 0
+		},
+		{
+			"from": 19,
+			"from_index": 1,
+			"to": 22,
+			"to_index": 1
+		},
+		{
+			"from": 19,
+			"from_index": 0,
+			"to": 23,
+			"to_index": 0
+		},
+		{
+			"from": 19,
+			"from_index": 1,
+			"to": 23,
+			"to_index": 1
+		}
+	]
+}

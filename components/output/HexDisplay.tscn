@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://components/Component.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/fff-10.tres" type="DynamicFont" id=2]
+[ext_resource path="res://components/output/HexDisplay.gd" type="Script" id=3]
+[ext_resource path="res://components/sprites/square.png" type="Texture" id=4]
+
+[node name="HexDisplay" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Sprite" index="0"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
+margin_top = -39.0
+margin_right = -12.0
+margin_bottom = -25.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 2 )
+text = "12ff"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

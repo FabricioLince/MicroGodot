@@ -1,0 +1,364 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "d",
+			"position": "(-416, -80)",
+			"complex_use": "CHIP_INPUT",
+			"value": 0,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "s1",
+			"position": "(-416, 32)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "s0",
+			"position": "(-416, 128)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 3,
+			"type": "HexDisplay",
+			"label": "d3",
+			"position": "(288, -208)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 4,
+			"type": "HexDisplay",
+			"label": "d2",
+			"position": "(288, -80)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 5,
+			"type": "HexDisplay",
+			"label": "d1",
+			"position": "(288, 48)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 6,
+			"type": "HexDisplay",
+			"label": "d0",
+			"position": "(288, 176)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 7,
+			"type": "ComplexChip",
+			"position": "(-96, -96)",
+			"path": "multiplex/demux (4ch 4bits).chip"
+		},
+		{
+			"id": 8,
+			"type": "ComplexChip",
+			"position": "(-96, 32)",
+			"path": "multiplex/demux (4ch 4bits).chip"
+		},
+		{
+			"id": 9,
+			"type": "ScriptChip",
+			"position": "(-288, -96)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				},
+				{
+					"name": "Input Bits",
+					"value": 2
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 10,
+			"type": "ScriptChip",
+			"position": "(160, -224)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 2
+				}
+			]
+		},
+		{
+			"id": 11,
+			"type": "ScriptChip",
+			"position": "(160, -96)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 2
+				}
+			]
+		},
+		{
+			"id": 12,
+			"type": "ScriptChip",
+			"position": "(160, 32)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 2
+				}
+			]
+		},
+		{
+			"id": 13,
+			"type": "ScriptChip",
+			"position": "(160, 160)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 2
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 9,
+			"from_index": 4,
+			"to": 7,
+			"to_index": 2,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 2,
+			"corners": [
+				"(-224, -80)",
+				"(-224, 32)"
+			]
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 12,
+			"to": 10,
+			"to_index": 4,
+			"corners": [
+				"(0, -112)",
+				"(0, -224)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 12,
+			"to": 10,
+			"to_index": 0,
+			"corners": [
+				"(16, 16)",
+				"(16, -208)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 8,
+			"to": 11,
+			"to_index": 4,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 8,
+			"to": 11,
+			"to_index": 0,
+			"corners": [
+				"(32, 32)",
+				"(32, -80)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 4,
+			"to": 12,
+			"to_index": 4,
+			"corners": [
+				"(0, -80)",
+				"(0, -32)",
+				"(96, 32)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 4,
+			"to": 12,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 13,
+			"to_index": 4,
+			"corners": [
+				"(-16, -64)",
+				"(-16, 160)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 13,
+			"to_index": 0,
+			"corners": [
+				"(-32, 64)",
+				"(-32, 176)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 1,
+			"corners": [
+				"(-208, 48)",
+				"(-208, -80)"
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+				"(-192, 144)",
+				"(-192, -64)"
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 12,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 13,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0,
+			"corners": [
+				"(-192, 144)",
+				"(-192, 64)"
+			]
+		}
+	]
+}

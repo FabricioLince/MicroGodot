@@ -1,0 +1,503 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "d",
+			"position": "(-544, -32)",
+			"complex_use": "CHIP_INPUT",
+			"value": 1,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "s0",
+			"position": "(-416, 160)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "s1",
+			"position": "(-416, 80)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 3,
+			"type": "HexDisplay",
+			"label": "d3",
+			"position": "(288, -320)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 4,
+			"type": "HexDisplay",
+			"label": "d2",
+			"position": "(288, -224)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 5,
+			"type": "HexDisplay",
+			"label": "d1",
+			"position": "(288, -128)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 6,
+			"type": "HexDisplay",
+			"label": "d0",
+			"position": "(288, -32)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 7,
+			"type": "ComplexChip",
+			"position": "(-96, -64)",
+			"path": "multiplex/demux (4ch).chip"
+		},
+		{
+			"id": 8,
+			"type": "ScriptChip",
+			"position": "(-400, -64)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 9,
+			"type": "ComplexChip",
+			"position": "(-96, -160)",
+			"path": "multiplex/demux (4ch).chip"
+		},
+		{
+			"id": 10,
+			"type": "ComplexChip",
+			"position": "(-96, -256)",
+			"path": "multiplex/demux (4ch).chip"
+		},
+		{
+			"id": 11,
+			"type": "ComplexChip",
+			"position": "(-96, -352)",
+			"path": "multiplex/demux (4ch).chip"
+		},
+		{
+			"id": 12,
+			"type": "ScriptChip",
+			"position": "(160, -352)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 0
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 13,
+			"type": "ScriptChip",
+			"position": "(160, -256)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 0
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 14,
+			"type": "ScriptChip",
+			"position": "(160, -160)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 0
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 15,
+			"type": "ScriptChip",
+			"position": "(160, -64)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 0
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 1,
+			"corners": [
+				"(-176, 96)",
+				"(-176, -48)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+				"(-160, 176)",
+				"(-160, -32)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 2,
+			"corners": [
+				"(-192, -32)",
+				"(-192, -64)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 1,
+			"to": 9,
+			"to_index": 2,
+			"corners": [
+				"(-208, -48)",
+				"(-208, -160)"
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 1,
+			"corners": [
+				"(-176, 96)",
+				"(-176, -144)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0,
+			"corners": [
+				"(-160, 176)",
+				"(-160, -128)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 2,
+			"to": 10,
+			"to_index": 2,
+			"corners": [
+				"(-224, -64)",
+				"(-224, -256)"
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 1,
+			"corners": [
+				"(-176, 96)",
+				"(-176, -240)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 0,
+			"corners": [
+				"(-160, 176)",
+				"(-160, -224)"
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 11,
+			"to_index": 0,
+			"corners": [
+				"(-160, 176)",
+				"(-160, -320)"
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 11,
+			"to_index": 1,
+			"corners": [
+				"(-176, 96)",
+				"(-176, -336)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 3,
+			"to": 11,
+			"to_index": 2,
+			"corners": [
+				"(-240, -80)",
+				"(-240, -352)"
+			]
+		},
+		{
+			"from": 12,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 13,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 14,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 15,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 1,
+			"to": 14,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 15,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 2,
+			"to": 13,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 3,
+			"to": 12,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 15,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 0,
+			"to": 15,
+			"to_index": 2,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 15,
+			"to_index": 3,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 1,
+			"to": 14,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 3,
+			"to": 12,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 1,
+			"to": 14,
+			"to_index": 2,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 1,
+			"to": 14,
+			"to_index": 3,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 2,
+			"to": 13,
+			"to_index": 2,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 2,
+			"to": 13,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 2,
+			"to": 13,
+			"to_index": 3,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 3,
+			"to": 12,
+			"to_index": 2,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 3,
+			"to": 12,
+			"to_index": 3,
+			"corners": [
+
+			]
+		}
+	]
+}

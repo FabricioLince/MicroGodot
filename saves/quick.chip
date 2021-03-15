@@ -1,0 +1,70 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "B",
+			"position": "(-432, -64)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 3,
+			"type": "Led",
+			"label": "L",
+			"position": "(-32, -64)"
+		}
+	],
+	"chips": [
+		{
+			"id": 1,
+			"type": "ScriptChip",
+			"position": "(-176, -64)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 2,
+			"type": "ScriptChip",
+			"position": "(-304, 0)",
+			"path": "Inverter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 0
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 1,
+			"to_index": 0
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 1,
+			"to_index": 1
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0
+		}
+	]
+}

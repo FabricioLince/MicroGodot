@@ -1,0 +1,183 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "Button",
+			"label": "write",
+			"position": "(-608, -64)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 1,
+			"type": "HexInput",
+			"label": "data",
+			"position": "(-608, -320)",
+			"complex_use": "CHIP_INPUT",
+			"value": 9,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 2,
+			"type": "HexDisplay",
+			"label": "data",
+			"position": "(0, -224)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 3,
+			"type": "ComplexChip",
+			"position": "(-288, -224)",
+			"path": "nor latch"
+		},
+		{
+			"id": 4,
+			"type": "ComplexChip",
+			"position": "(-288, -128)",
+			"path": "nor latch"
+		},
+		{
+			"id": 5,
+			"type": "ComplexChip",
+			"position": "(-288, -32)",
+			"path": "nor latch"
+		},
+		{
+			"id": 6,
+			"type": "ComplexChip",
+			"position": "(-288, -320)",
+			"path": "nor latch"
+		},
+		{
+			"id": 7,
+			"type": "ScriptChip",
+			"position": "(-512, -320)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 8,
+			"type": "ScriptChip",
+			"position": "(-128, -224)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 0
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 0
+		},
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 0
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0
+		},
+		{
+			"from": 7,
+			"from_index": 3,
+			"to": 6,
+			"to_index": 1
+		},
+		{
+			"from": 7,
+			"from_index": 2,
+			"to": 3,
+			"to_index": 1
+		},
+		{
+			"from": 7,
+			"from_index": 1,
+			"to": 4,
+			"to_index": 1
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 1
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 2,
+			"to_index": 0
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 3
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 2
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 1
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0
+		}
+	]
+}
