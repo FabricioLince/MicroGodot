@@ -7,6 +7,7 @@ func load_from(path):
 	if cache.has(path):
 		#print("cache hit ", path)
 		return cache[path]
+	#print("cache miss ", path)
 	var file = File.new()
 	file.open(path, File.READ)
 	if file.is_open():

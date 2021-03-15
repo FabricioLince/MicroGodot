@@ -4,7 +4,6 @@ signal done_checking(cancel)
 signal done_saving
 
 var file_dialog 
-var popup_dialog
 var design_file_path
 var board setget set_board
 var camera
@@ -61,7 +60,7 @@ func load_from_path(path, clear_board=true):
 		set_title_text(path)
 		needs_save = false
 	else:
-		popup_dialog.prompt_warning("'%s' couldn't be open"%path)
+		MessageSystem.popup.prompt_warning("'%s' couldn't be open"%path)
 
 func set_board(b):
 	board = b
@@ -78,8 +77,8 @@ func set_title_text(text):
 	
 func check_needs_save():
 	if needs_save:
-		popup_dialog.prompt("Current Design isn't saved", ["Save", "Discard", "Cancel"])
-		var b = yield(popup_dialog, "button_pressed")
+		MessageSystem.popup.prompt("Current Design isn't saved", ["Save", "Discard", "Cancel"])
+		var b = yield(MessageSystem.popup, "button_pressed")
 		match b:
 			0:
 				save_design()

@@ -5,6 +5,7 @@ signal done_clearing
 signal modification
 
 onready var camera = get_node("../Camera2D")
+onready var loading_bar = get_node("/root/Editor/CanvasLayer/LoadingBar")
 var components = []
 
 var last_id = 0
@@ -83,6 +84,8 @@ func read_serialized_content(content):
 			print("Couldn't parse content:")
 			print(content)
 			return
+		
+		loading_bar.total = float(all.io.size() + all.chips.size() + all.connections.size())
 		for io in all.io:
 			#print(io)
 			io.position = SerializerHelper.string_to_vector2(io.position)
@@ -90,6 +93,7 @@ func read_serialized_content(content):
 			last_id = max(c.id, last_id)
 			yield(get_tree(), "idle_frame")
 			camera.center_components(components)
+			loading_bar.increment()
 		for chip in all.chips:
 			#print(chip)
 			chip.position = SerializerHelper.string_to_vector2(chip.position)
@@ -97,6 +101,7 @@ func read_serialized_content(content):
 			last_id = max(c.id, last_id)
 			yield(get_tree(), "idle_frame")
 			camera.center_components(components)
+			loading_bar.increment()
 		yield(get_tree(), "idle_frame")
 		for info in all.connections:
 			#print(info)
@@ -107,6 +112,8 @@ func read_serialized_content(content):
 			var con = Instantiator.connect_directly(from_connector, to_connector)
 			con.corners_from_info(info)
 			yield(get_tree(), "idle_frame")
+			loading_bar.increment()
+	
 	emit_signal("done_loading")
 
 func wait():

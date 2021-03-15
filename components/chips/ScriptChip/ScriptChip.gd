@@ -28,6 +28,7 @@ func load_script(path, force_reload=false):
 		chip_behavior.connect("on_rebuild", self, "initialize_connectors")
 	else:
 		push_error("'%s' could not be found"%full_path)
+		MessageSystem.popup.prompt_warning("'%s' script could not be found"%file_path)
 		self.label = "ERROR"
 		return false
 
@@ -67,12 +68,14 @@ func from_info(info):
 	.from_info(info)
 
 func description():
-	return chip_behavior.description()
+	if chip_behavior:
+		return chip_behavior.description()
+	return "'%s' could not be found"%file_path
 
 func get_properties():
-	return chip_behavior.get_properties()
-
-	
+	if chip_behavior:
+		return chip_behavior.get_properties()
+	return []
 
 func get(prop_name):
 	if chip_behavior:

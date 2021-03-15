@@ -24,9 +24,7 @@ func _ready():
 	DesignManager.file_dialog = $CanvasLayer/FileDialog
 	DesignManager.board = Board
 	DesignManager.camera = camera
-	DesignManager.popup_dialog = $CanvasLayer/PopupDialog
 	
-	Selector.popup_dialog = $CanvasLayer/PopupDialog
 	Selector.info_panel = InfoPanel
 	
 	ContextMenuCreator.canvas_layer = $CanvasLayer

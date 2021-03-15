@@ -1,0 +1,287 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "data",
+			"position": "(-96, 32)",
+			"complex_use": "CHIP_INPUT",
+			"value": 4,
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "HexDisplay",
+			"label": "data",
+			"position": "(464, 48)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 4,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "allow",
+			"position": "(-96, -112)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		}
+	],
+	"chips": [
+		{
+			"id": 3,
+			"type": "ScriptChip",
+			"position": "(160, 96)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 4,
+			"type": "ScriptChip",
+			"position": "(160, 32)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 5,
+			"type": "ScriptChip",
+			"position": "(160, -32)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 6,
+			"type": "ScriptChip",
+			"position": "(160, -96)",
+			"path": "Logic",
+			"properties": [
+				{
+					"name": "Kind",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 7,
+			"type": "ScriptChip",
+			"position": "(0, 0)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 1
+				},
+				{
+					"name": "Output Bits",
+					"value": 0
+				}
+			]
+		},
+		{
+			"id": 8,
+			"type": "ScriptChip",
+			"position": "(336, 16)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 0
+				},
+				{
+					"name": "Input Bits",
+					"value": 0
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 9,
+			"type": "ScriptChip",
+			"position": "(16, -96)",
+			"path": "Conversor",
+			"properties": [
+				{
+					"name": "from",
+					"value": 1
+				},
+				{
+					"name": "to",
+					"value": 0
+				}
+			]
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 7,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 3,
+			"to": 6,
+			"to_index": 0,
+			"corners": [
+				"(64, -16)",
+				"(64, -80)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 2,
+			"to": 5,
+			"to_index": 0,
+			"corners": [
+				"(80, 0)",
+				"(80, 0)",
+				"(80, 0)",
+				"(80, -16)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 1,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+				"(80, 16)",
+				"(80, 48)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+				"(64, 32)",
+				"(64, 112)"
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 1,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 3,
+			"corners": [
+				"(272, -80)",
+				"(272, 0)"
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 2,
+			"corners": [
+				"(256, -16)",
+				"(256, 16)"
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 1,
+			"corners": [
+				"(256, 48)",
+				"(256, 32)"
+			]
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0,
+			"corners": [
+				"(272, 112)",
+				"(272, 48)"
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 6,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 5,
+			"to_index": 1,
+			"corners": [
+				"(96, -96)",
+				"(96, -32)"
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 1,
+			"corners": [
+				"(96, -96)",
+				"(96, 32)"
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 3,
+			"to_index": 1,
+			"corners": [
+				"(96, -96)",
+				"(96, 96)"
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0,
+			"corners": [
+
+			]
+		}
+	]
+}

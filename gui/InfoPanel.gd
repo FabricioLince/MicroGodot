@@ -7,7 +7,6 @@ const ButtonPanel = preload("res://gui/propertypanels/Button.tscn")
 
 var showing_for = null
 var panels = []
-var popup_dialog
 
 func _process(_delta):
 	if showing_for == null:
@@ -73,8 +72,8 @@ func _on_DeleteButton_pressed():
 		var descr = object_description()
 		if descr:
 			var dialog_text = "Delete %s?"%showing_for.description()
-			popup_dialog.prompt_confirmation(dialog_text)
-			var answer = yield(popup_dialog, "button_pressed")
+			MessageSystem.popup.prompt_confirmation(dialog_text)
+			var answer = yield(MessageSystem.popup, "button_pressed")
 			if answer == 0:
 				showing_for.on_delete()
 				hide_info()

@@ -13,7 +13,7 @@ var board
 var popup_dialog
 var design_manager
 
-func spawn_component(prefab, label, position):
+func spawn_labeled_component(prefab, position, label):
 	var c = prefab.instance()
 	board.add_child(c)
 	c.name = label
@@ -21,13 +21,13 @@ func spawn_component(prefab, label, position):
 	c.set_position(position)
 	return c
 func spawn_hexdisplay(label, position):
-	return spawn_component(HexDisplay, label, position)
+	return spawn_labeled_component(HexDisplay, position, label)
 func spawn_hexinput(label, position):
-	return spawn_component(HexInput, label, position)
+	return spawn_labeled_component(HexInput, position, label)
 func spawn_button(label, position):
-	return spawn_component(Button, label, position)
+	return spawn_labeled_component(Button, position, label)
 func spawn_led(label, position):
-	return spawn_component(Led, label, position)
+	return spawn_labeled_component(Led, position, label)
 
 func secure_spawn_io_by_type(type, label, position):
 	match(type):

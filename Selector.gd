@@ -4,7 +4,6 @@ signal selected_items(items)
 
 onready var Group = preload("res://scripts/ObjectGroup.gd")
 
-var popup_dialog
 var info_panel
 
 onready var line = $Line2D
@@ -106,8 +105,8 @@ func on_key_delete():
 		else:
 			if descr:
 				dialog_text = "Delete %s?"%[descr]
-		popup_dialog.prompt_confirmation(dialog_text)
-		var answer = yield(popup_dialog, "button_pressed")
+		MessageSystem.popup.prompt_confirmation(dialog_text)
+		var answer = yield(MessageSystem.popup, "button_pressed")
 		if answer == 0:
 			for s in selected_items:
 				s.on_delete()

@@ -2,14 +2,13 @@ extends CanvasLayer
 
 enum InputComponents {Button, HexInput}
 enum OutputComponents {Led, HexDisplay}
-enum UtilChips {Inverter, Conversor, Splitter, Counter, Clock}
+enum UtilChips {Inverter, Conversor, Splitter, Counter, Clock, Bus}
 
 export (Theme) var theme 
 
 onready var Mouse = get_node("../Mouse")
 onready var Board = get_node("../Board")
 onready var file_dialog = $FileDialog
-onready var popup_dialog = $PopupDialog
 onready var file_menu = $TopBar/MainMenu/FileMenu
 onready var insert_menu = $TopBar/MainMenu/InsertMenu
 onready var info_panel = $InfoPanel
@@ -21,7 +20,6 @@ func set_none(_a): pass
 
 func _ready():
 	file_menu.file_dialog = file_dialog
-	info_panel.popup_dialog = popup_dialog
 	prepare_popup($InsertPopup, self.insert_menu_items)
 	context_menu.connect("hide", self, "on_hide_context_menu")
 
@@ -138,6 +136,9 @@ func on_util_chip_pressed(id):
 			Mouse.holding = c
 		UtilChips.Clock:
 			var c = Instantiator.spawn_script_chip("Clock", get_global_mouse_position())
+			Mouse.holding = c
+		UtilChips.Bus:
+			var c = Instantiator.spawn_script_chip("Bus", get_global_mouse_position())
 			Mouse.holding = c
 
 func on_chip_menu_pressed(id):
