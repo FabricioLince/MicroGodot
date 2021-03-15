@@ -17,14 +17,14 @@
 			"state": 1
 		},
 		{
-			"id": 3,
+			"id": 2,
 			"type": "Led",
 			"label": "L",
 			"position": "(352, -16)",
 			"complex_use": "CHIP_OUTPUT"
 		},
 		{
-			"id": 4,
+			"id": 3,
 			"type": "HexInput",
 			"label": "H",
 			"position": "(-16, 160)",
@@ -34,7 +34,7 @@
 			"show_value_as": "PURE_VALUE"
 		},
 		{
-			"id": 6,
+			"id": 4,
 			"type": "HexDisplay",
 			"label": "H",
 			"position": "(352, 96)",
@@ -43,7 +43,7 @@
 			"show_value_as": "PURE_VALUE"
 		},
 		{
-			"id": 7,
+			"id": 5,
 			"type": "HexDisplay",
 			"label": "H",
 			"position": "(352, 176)",
@@ -52,7 +52,7 @@
 			"show_value_as": "PURE_VALUE"
 		},
 		{
-			"id": 9,
+			"id": 6,
 			"type": "HexDisplay",
 			"label": "H",
 			"position": "(352, 368)",
@@ -61,7 +61,7 @@
 			"show_value_as": "PURE_VALUE"
 		},
 		{
-			"id": 10,
+			"id": 7,
 			"type": "HexDisplay",
 			"label": "H",
 			"position": "(352, 288)",
@@ -70,7 +70,7 @@
 			"show_value_as": "PURE_VALUE"
 		},
 		{
-			"id": 11,
+			"id": 8,
 			"type": "Led",
 			"label": "L",
 			"position": "(256, 240)",
@@ -79,7 +79,7 @@
 	],
 	"chips": [
 		{
-			"id": 2,
+			"id": 9,
 			"type": "ScriptChip",
 			"position": "(160, -32)",
 			"path": "Logic",
@@ -91,7 +91,7 @@
 			]
 		},
 		{
-			"id": 5,
+			"id": 10,
 			"type": "ScriptChip",
 			"position": "(160, 96)",
 			"path": "Inverter",
@@ -103,17 +103,23 @@
 			]
 		},
 		{
-			"id": 8,
+			"id": 11,
 			"type": "ComplexChip",
 			"position": "(160, 288)",
 			"path": "testes/constant.chip"
+		},
+		{
+			"id": 12,
+			"type": "ScriptChip",
+			"position": "(-160, 80)",
+			"path": "Bus"
 		}
 	],
 	"connections": [
 		{
 			"from": 0,
 			"from_index": 0,
-			"to": 2,
+			"to": 9,
 			"to_index": 1,
 			"corners": [
 
@@ -122,6 +128,15 @@
 		{
 			"from": 1,
 			"from_index": 0,
+			"to": 9,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
 			"to": 2,
 			"to_index": 0,
 			"corners": [
@@ -129,16 +144,25 @@
 			]
 		},
 		{
-			"from": 2,
+			"from": 3,
 			"from_index": 0,
-			"to": 3,
+			"to": 10,
 			"to_index": 0,
 			"corners": [
 
 			]
 		},
 		{
-			"from": 4,
+			"from": 10,
+			"from_index": 0,
+			"to": 4,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 3,
 			"from_index": 0,
 			"to": 5,
 			"to_index": 0,
@@ -147,7 +171,7 @@
 			]
 		},
 		{
-			"from": 5,
+			"from": 11,
 			"from_index": 0,
 			"to": 6,
 			"to_index": 0,
@@ -156,8 +180,8 @@
 			]
 		},
 		{
-			"from": 4,
-			"from_index": 0,
+			"from": 11,
+			"from_index": 4,
 			"to": 7,
 			"to_index": 0,
 			"corners": [
@@ -165,27 +189,9 @@
 			]
 		},
 		{
-			"from": 8,
-			"from_index": 0,
-			"to": 9,
-			"to_index": 0,
-			"corners": [
-
-			]
-		},
-		{
-			"from": 8,
-			"from_index": 4,
-			"to": 10,
-			"to_index": 0,
-			"corners": [
-
-			]
-		},
-		{
-			"from": 8,
+			"from": 11,
 			"from_index": 8,
-			"to": 11,
+			"to": 8,
 			"to_index": 0,
 			"corners": [
 

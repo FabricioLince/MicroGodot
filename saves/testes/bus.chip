@@ -1,0 +1,236 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "i0",
+			"position": "(-208, 224)",
+			"complex_use": "CHIP_INPUT",
+			"value": 1,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "Button",
+			"label": "a0",
+			"position": "(-208, 144)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 2,
+			"type": "HexInput",
+			"label": "i1",
+			"position": "(-208, 64)",
+			"complex_use": "CHIP_INPUT",
+			"value": 2,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 3,
+			"type": "Button",
+			"label": "a1",
+			"position": "(-208, 0)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 4,
+			"type": "HexInput",
+			"label": "i2",
+			"position": "(-208, -64)",
+			"complex_use": "CHIP_INPUT",
+			"value": 10,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 5,
+			"type": "Button",
+			"label": "a2",
+			"position": "(-208, -128)",
+			"complex_use": "CHIP_INPUT",
+			"state": 1
+		},
+		{
+			"id": 6,
+			"type": "HexInput",
+			"label": "i3",
+			"position": "(-208, -192)",
+			"complex_use": "CHIP_INPUT",
+			"value": 11,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 7,
+			"type": "Button",
+			"label": "a3",
+			"position": "(-208, -256)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 8,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(128, 16)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		}
+	],
+	"chips": [
+		{
+			"id": 9,
+			"type": "ScriptChip",
+			"position": "(48, -16)",
+			"path": "Bus"
+		},
+		{
+			"id": 10,
+			"type": "ComplexChip",
+			"position": "(-96, 208)",
+			"path": "allow (8bits).chip"
+		},
+		{
+			"id": 11,
+			"type": "ComplexChip",
+			"position": "(-96, 48)",
+			"path": "allow (8bits).chip"
+		},
+		{
+			"id": 12,
+			"type": "ComplexChip",
+			"position": "(-96, -80)",
+			"path": "allow (8bits).chip"
+		},
+		{
+			"id": 13,
+			"type": "ComplexChip",
+			"position": "(-96, -208)",
+			"path": "allow (8bits).chip"
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 1,
+			"from_index": 0,
+			"to": 10,
+			"to_index": 8,
+			"corners": [
+				"(-128, 160)"
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 11,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 3,
+			"from_index": 0,
+			"to": 11,
+			"to_index": 8,
+			"corners": [
+				"(-128, 16)"
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 8,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 12,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 12,
+			"to_index": 8,
+			"corners": [
+				"(-128, -112)"
+			]
+		},
+		{
+			"from": 12,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 16,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 13,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 13,
+			"to_index": 8,
+			"corners": [
+				"(-128, -240)"
+			]
+		},
+		{
+			"from": 13,
+			"from_index": 0,
+			"to": 9,
+			"to_index": 24,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 8,
+			"to_index": 0,
+			"corners": [
+
+			]
+		}
+	]
+}
