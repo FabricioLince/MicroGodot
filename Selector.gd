@@ -51,8 +51,9 @@ func done_selecting():
 	for area in $Area2D.get_overlapping_areas():
 		var object = area.get_parent()
 		if is_selectable(object):
-			select(object)
+			select(object, false)
 			#print(comp.description())
+	update_info_for_selection()
 	self.a = Vector2.ZERO
 	self.b = Vector2.ZERO
 	emit_signal("selected_items", selected_items)
@@ -60,23 +61,29 @@ func done_selecting():
 func deselect_all():
 	while selected_items.size() > 0:
 		if selected_items[0]:
-			deselect(selected_items[0])
+			deselect(selected_items[0], false)
 		else: 
 			selected_items.remove(0)
+	update_info_for_selection()
 
-func select(item):
+# -- when calling select/deselect on a loop, update_info should be false
+# -- as to not clog the info panel processing
+# -- then, at the end of the loop, update_info_for_selection() may be called once
+func select(item, update_info=true):
 	if not is_selectable(item): return
 	if is_selected(item): return
 	selected_items.append(item)
 	item.get_node("SelectionLine").show()
-	update_info_for_selection()
+	if update_info:
+		update_info_for_selection()
 	#print("selected items: ", selected_items)
 
-func deselect(item):
+func deselect(item, update_info=true):
 	#if selected_items.has(item):
 	item.get_node("SelectionLine").hide()
 	selected_items.erase(item)
-	update_info_for_selection()
+	if update_info:
+		update_info_for_selection()
 	#print("selected items: ", selected_items)
 
 func select_only(item):
@@ -127,6 +134,8 @@ func update_info_for_selection():
 			object_group.objects.append(o)
 			object_group.positions_delta.append(center - o.position)
 			#print(o, " -> ", (center - o.position))
+		while info_panel.busy:
+			yield(get_tree(), "idle_frame")
 		if selected_items.size() == 1:
 			info_panel.show_info_for(selected_items[0])
 		else:

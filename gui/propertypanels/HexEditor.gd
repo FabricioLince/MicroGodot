@@ -25,22 +25,22 @@ func on_value_changed(new_value):
 	else:
 		hex = "%X"%int(new_value)
 		line_edit.text = hex
+#		print("emitting for ", new_value, " (%s)"%hex)
 		emit_signal("value_changed", int(new_value))
 
 func on_text_changed(new_text):
 	var caret = line_edit.caret_position
-	#print("new text = ", new_text)
-	var value = ("0x"+new_text).hex_to_int()
-	if value > spin_box.max_value:
+#	print("new text = ", new_text)
+	var new_value = ("0x"+new_text).hex_to_int()
+	if new_value > spin_box.max_value:
 		new_text = new_text.substr(1, -1) # chops first character
-		value = ("0x"+new_text).hex_to_int()
-	spin_box.value = value
+		new_value = ("0x"+new_text).hex_to_int()
+	spin_box.value = new_value
 	#print("new value from hex = ", self.value)
 	line_edit.caret_position = caret
 
 func set_hex(h):
 	spin_box.value = ("0x"+str(h)).hex_to_int()
-
 
 var label setget set_label
 func set_label(l):

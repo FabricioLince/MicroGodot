@@ -23,10 +23,14 @@ func hide_info():
 	hide()
 	set_process(false)
 
+var busy = false
 func show_info_for(object):
+	if busy: return
+	busy = true
 	#if showing_for or panels.size() > 0:
 	hide_info()
 	yield(get_tree(), "idle_frame")
+	
 	showing_for = object
 	show_title_for(object)
 	
@@ -62,6 +66,7 @@ func show_info_for(object):
 			$Properties.remove_child($Properties.get_child(i))
 		else:
 			i+=1
+	busy = false
 
 func refresh():
 	var obj = showing_for
@@ -95,7 +100,11 @@ func has_property(name):
 func get_property(name):
 	return showing_for.get(name)
 func _on_property_changed(value, name):
-	showing_for.set(name, value)
+	if showing_for:
+		showing_for.set(name, value)
+	else:
+		print("trying to set value ", value)
+		#push_warning("shouldn't happen but is happening :(")
 
 
 func create_toggle(label, property_name):
@@ -132,10 +141,6 @@ func create_button(label, callback):
 
 func raw_panel(Scene, label=null):
 	var panel = Scene.instance()
-#	if Scene.has_method("instance"):
-#		panel = Scene.instance()
-#	else:
-#		panel = Scene.new()
 	$Properties.add_child(panel)
 	panels.append(panel)
 	if label:
