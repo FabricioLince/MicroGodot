@@ -2,7 +2,7 @@ extends Node2D
 
 signal selected_items(items)
 
-onready var Group = preload("res://scripts/ObjectGroup.gd")
+const Group = preload("res://scripts/ObjectGroup.gd")
 
 var info_panel
 

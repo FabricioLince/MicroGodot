@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/propertypanels/TextEditor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gui/propertypanels/HexEditor.gd" type="Script" id=2]
+
+[node name="HexEditor" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Label" parent="Container" index="0"]
+text = "Value"
+
+[node name="LineEdit" parent="Container" index="1"]
+visible = false
+
+[node name="SpinBox" type="SpinBox" parent="Container" index="2"]
+margin_top = 18.0
+margin_right = 186.0
+margin_bottom = 42.0

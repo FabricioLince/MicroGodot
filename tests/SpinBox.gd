@@ -5,8 +5,8 @@ signal int_changed(new_int)
 var hex = 0 setget set_hex
 
 func _ready():
-	connect("value_changed", self, "on_value_changed")
-	get_line_edit().connect("text_changed", self, "on_text_changed")
+	var _a = connect("value_changed", self, "on_value_changed")
+	_a = get_line_edit().connect("text_changed", self, "on_text_changed")
 
 func on_value_changed(new_value):
 	print("new value = ", new_value)

@@ -1,5 +1,7 @@
 extends "res://components/input/OutputOnly.gd"
 
+signal update_info_panel()
+
 var value = 0 setget set_value
 func set_value(v):
 	match(show_value_as):
@@ -42,6 +44,7 @@ func set_bits(b):
 		get_node("ButtonFitter/100s").show()
 		get_node("ButtonFitter/10s").show()
 	get_node("ButtonFitter").update_fitting()
+	emit_signal("update_info_panel")
 
 var output = []
 var connector

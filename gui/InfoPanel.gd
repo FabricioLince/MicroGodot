@@ -4,6 +4,7 @@ const Toggle = preload("res://gui/propertypanels/Toggle.tscn")
 const TextEditor = preload("res://gui/propertypanels/TextEditor.tscn")
 const DropDown = preload("res://gui/propertypanels/DropDown.tscn")
 const ButtonPanel = preload("res://gui/propertypanels/Button.tscn")
+const HexEditor = preload("res://gui/propertypanels/HexEditor.tscn")
 
 var showing_for = null
 var panels = []
@@ -23,7 +24,9 @@ func hide_info():
 	set_process(false)
 
 func show_info_for(object):
+	#if showing_for or panels.size() > 0:
 	hide_info()
+	yield(get_tree(), "idle_frame")
 	showing_for = object
 	show_title_for(object)
 	
@@ -35,7 +38,7 @@ func show_info_for(object):
 				"toggle":
 					create_toggle(p.label, p.name)
 				"hex_value":
-					create_hex_editor(p.label, p.name)
+					create_hex_editor(p.label, p.name, pow(2, p.size))
 				"list":
 					create_drop_down(p.label, p.items, p.name)
 				"button":
@@ -47,6 +50,7 @@ func show_info_for(object):
 	set_process(true)
 	if showing_for.has_signal("update_info_panel"):
 		showing_for.connect("update_info_panel", self, "show_info_for", [showing_for])
+		#showing_for.connect("update_info_panel", self, "refresh")
 	
 	# for some reason, when show info for multiple objects
 	# the rapid calls to this function in causing a desync 
@@ -58,6 +62,11 @@ func show_info_for(object):
 			$Properties.remove_child($Properties.get_child(i))
 		else:
 			i+=1
+
+func refresh():
+	var obj = showing_for
+	hide_info()
+	show_info_for(obj)
 
 func show_title_for(_object):
 	var descr = object_description()
@@ -95,16 +104,12 @@ func create_toggle(label, property_name):
 	toggle.connect("state_changed", self, "_on_property_changed", [property_name])
 	return toggle
 
-func create_hex_editor(label, property_name):
-#	var text_editor = raw_panel(TextEditor, label)
-#	text_editor.text = "%X"%get_property(property_name)
-#	text_editor.connect("hex_changed", self, "_on_property_changed", [property_name])
-	var text_editor = raw_panel(preload("res://tests/SpinBox.gd"), null)
-	text_editor.min_value = 0
-	text_editor.max_value = 0xFFFF
-	text_editor.value = get_property(property_name)
-	text_editor.connect("int_changed", self, "_on_property_changed", [property_name])
-	return text_editor
+func create_hex_editor(label, property_name, max_value):
+	var hex_editor = raw_panel(HexEditor, label)
+	hex_editor.spin_box.max_value = max_value
+	hex_editor.value = get_property(property_name)
+	hex_editor.connect("value_changed", self, "_on_property_changed", [property_name])
+	return hex_editor
 
 func create_text_editor(label, property_name):
 	var text_editor = raw_panel(TextEditor, label)
@@ -126,11 +131,11 @@ func create_button(label, callback):
 	return button
 
 func raw_panel(Scene, label=null):
-	var panel #= Scene.instance()
-	if Scene.has_method("instance"):
-		panel = Scene.instance()
-	else:
-		panel = Scene.new()
+	var panel = Scene.instance()
+#	if Scene.has_method("instance"):
+#		panel = Scene.instance()
+#	else:
+#		panel = Scene.new()
 	$Properties.add_child(panel)
 	panels.append(panel)
 	if label:
