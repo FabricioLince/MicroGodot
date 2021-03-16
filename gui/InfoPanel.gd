@@ -96,9 +96,14 @@ func create_toggle(label, property_name):
 	return toggle
 
 func create_hex_editor(label, property_name):
-	var text_editor = raw_panel(TextEditor, label)
-	text_editor.text = "%X"%get_property(property_name)
-	text_editor.connect("hex_changed", self, "_on_property_changed", [property_name])
+#	var text_editor = raw_panel(TextEditor, label)
+#	text_editor.text = "%X"%get_property(property_name)
+#	text_editor.connect("hex_changed", self, "_on_property_changed", [property_name])
+	var text_editor = raw_panel(preload("res://tests/SpinBox.gd"), null)
+	text_editor.min_value = 0
+	text_editor.max_value = 0xFFFF
+	text_editor.value = get_property(property_name)
+	text_editor.connect("int_changed", self, "_on_property_changed", [property_name])
 	return text_editor
 
 func create_text_editor(label, property_name):
@@ -121,7 +126,11 @@ func create_button(label, callback):
 	return button
 
 func raw_panel(Scene, label=null):
-	var panel = Scene.instance()
+	var panel #= Scene.instance()
+	if Scene.has_method("instance"):
+		panel = Scene.instance()
+	else:
+		panel = Scene.new()
 	$Properties.add_child(panel)
 	panels.append(panel)
 	if label:

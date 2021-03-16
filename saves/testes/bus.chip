@@ -87,7 +87,13 @@
 			"id": 9,
 			"type": "ScriptChip",
 			"position": "(48, -16)",
-			"path": "Bus"
+			"path": "Bus",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				}
+			]
 		},
 		{
 			"id": 10,

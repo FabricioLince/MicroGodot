@@ -1,5 +1,10 @@
 extends "res://components/chips/ScriptChip/ScriptChipBase.gd"
 
+const sizes = [4, 8, 12, 16]
+
+var size_prop = create_property("Size", PropertyKind.LIST, 0, {items=sizes})
+#var inputs = create_property("Inputs", PropertyKind.TEXT)
+
 var input_spec = {i0=8, i1=8, i2=8, i3=8}
 var output_spec = {data=8}
 
