@@ -14,7 +14,7 @@
 			"id": 1,
 			"type": "Button",
 			"label": "a0",
-			"position": "(-208, 144)",
+			"position": "(-272, 144)",
 			"complex_use": "CHIP_INPUT",
 			"state": 0
 		},
@@ -32,7 +32,7 @@
 			"id": 3,
 			"type": "Button",
 			"label": "a1",
-			"position": "(-208, 0)",
+			"position": "(-272, 0)",
 			"complex_use": "CHIP_INPUT",
 			"state": 0
 		},
@@ -50,7 +50,7 @@
 			"id": 5,
 			"type": "Button",
 			"label": "a2",
-			"position": "(-208, -128)",
+			"position": "(-272, -128)",
 			"complex_use": "CHIP_INPUT",
 			"state": 1
 		},
@@ -68,7 +68,7 @@
 			"id": 7,
 			"type": "Button",
 			"label": "a3",
-			"position": "(-208, -256)",
+			"position": "(-272, -256)",
 			"complex_use": "CHIP_INPUT",
 			"state": 0
 		},

@@ -10,10 +10,11 @@ var showing_for = null
 var panels = []
 
 func _process(_delta):
-	if showing_for == null:
+	if showing_for == null or showing_for.get("valid") == false:
 		hide_info()
 
 func hide_info():
+	busy = true # to prevent addition of panels while the old ones are being deleted
 	if showing_for and showing_for.has_signal("update_info_panel"):
 		showing_for.disconnect("update_info_panel", self, "show_info_for")
 	showing_for = null
@@ -22,14 +23,17 @@ func hide_info():
 	panels.clear()
 	hide()
 	set_process(false)
+	# -- give time for the panel to process the deletion of its children
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	busy = false
 
 var busy = false
 func show_info_for(object):
-	if busy: return
-	busy = true
-	#if showing_for or panels.size() > 0:
-	hide_info()
-	yield(get_tree(), "idle_frame")
+	if showing_for or panels.size() > 0:
+		hide_info()
+		while busy:
+			yield(get_tree(), "idle_frame")
 	
 	showing_for = object
 	show_title_for(object)
@@ -66,7 +70,6 @@ func show_info_for(object):
 			$Properties.remove_child($Properties.get_child(i))
 		else:
 			i+=1
-	busy = false
 
 func refresh():
 	var obj = showing_for

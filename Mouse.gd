@@ -84,7 +84,8 @@ func click_on_object(info):
 	if info.object.has_method("on_simple_click"):
 		info.object.on_simple_click(info)
 	else:
-		print(info.object.name, " doesn't have 'on_simple_click' callback")
+		pass
+		#print(info.object.name, " doesn't have 'on_simple_click' callback")
 	
 	match info.event.button_index:
 		BUTTON_LEFT:

@@ -120,6 +120,8 @@ func on_key_delete():
 			deselect_all()
 
 func update_info_for_selection():
+	if object_group:
+		object_group.remove_connections()
 	if selected_items.size() == 0:
 		info_panel.hide_info()
 	else:
@@ -131,11 +133,7 @@ func update_info_for_selection():
 		center /= selected_items.size()
 		#print("center: ", center)
 		for o in selected_items:
-			object_group.objects.append(o)
-			object_group.positions_delta.append(center - o.position)
-			#print(o, " -> ", (center - o.position))
-		while info_panel.busy:
-			yield(get_tree(), "idle_frame")
+			object_group.add_object(o, center - o.position)
 		if selected_items.size() == 1:
 			info_panel.show_info_for(selected_items[0])
 		else:

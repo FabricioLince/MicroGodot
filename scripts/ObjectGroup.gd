@@ -1,6 +1,7 @@
 extends Object
 
-signal update_info_panel
+# warning-ignore:unused_signal
+signal update_info_panel() # the signal is send by receiving the signal from the objects
 
 var objects = []
 var positions_delta = []
@@ -10,6 +11,13 @@ var common_properties = []
 func add_object(object, position_delta):
 	objects.append(object)
 	positions_delta.append(position_delta)
+	if object.has_signal("update_info_panel"):
+		object.connect("update_info_panel", self, "emit_signal", ["update_info_panel"])
+
+func remove_connections():
+	for o in objects:
+		if o.has_signal("update_info_panel") and o.is_connected("update_info_panel", self, "emit_signal"):
+			o.disconnect("update_info_panel", self, "emit_signal")
 
 func set_position(p):
 	#print("setting group position to %s (%s)"%[p, click_pos])
@@ -40,9 +48,8 @@ func get_properties():
 	return common_properties
 
 func get(name):
-	#print("getting %s"%name)
 	for cp in common_properties:
-		if cp.name == name:
+		if cp.get("name") == name:
 			return objects[0].get(name)
 	return .get(name)
 func set(name, value):
@@ -51,7 +58,6 @@ func set(name, value):
 		if cp.name == name:
 			for o in objects:
 				o.set(name, value)
-			emit_signal("update_info_panel")
 			return 
 	.set(name, value)
 
@@ -108,3 +114,11 @@ func first_component():
 	for o in objects:
 		if o.get("is_component"):
 			return o
+
+var valid = true setget set_, is_valid
+func set_(_a): pass
+func is_valid():
+	for o in objects:
+		if o == null:
+			return false
+	return true
