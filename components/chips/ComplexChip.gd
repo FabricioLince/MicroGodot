@@ -50,7 +50,9 @@ func get_output():
 	return output
 
 func description():
-	return get_label()
+	if chip_behavior:
+		return get_label()
+	return "'%s' couldn't be loaded"%file_path
 	#"Complex Chip\n"+get_label()
 
 func component_name():

@@ -16,7 +16,7 @@ func add_object(object, position_delta):
 
 func remove_connections():
 	for o in objects:
-		if o.has_signal("update_info_panel") and o.is_connected("update_info_panel", self, "emit_signal"):
+		if o and o.has_signal("update_info_panel") and o.is_connected("update_info_panel", self, "emit_signal"):
 			o.disconnect("update_info_panel", self, "emit_signal")
 
 func set_position(p):

@@ -6,6 +6,16 @@ const script_chip_extension = ".gd"
 var standalone setget set_none, is_standalone
 func is_standalone(): return OS.has_feature("standalone")
 
+var builtin_chips = {
+	Logic = preload("res://chips/Logic.gd"),
+	Clock = preload("res://chips/Clock.gd"),
+	Conversor = preload("res://chips/Conversor.gd"),
+	Splitter = preload("res://chips/Splitter.gd"),
+	Inverter = preload("res://chips/Inverter.gd"),
+	Counter = preload("res://chips/Counter.gd"),
+	Bus = preload("res://chips/Bus.gd"),
+}
+
 func _ready():
 	saves_path = self.saves_path
 	scripts_path = self.scripts_path
@@ -91,7 +101,6 @@ func get_scripts_path():
 func combine_paths(p1, p2):
 	var path = p1 + "/" + p2
 	return path.replace("//", "/").replace(":/", "://")
-
 
 func signal_to_color(sig):
 	match (sig):

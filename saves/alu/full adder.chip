@@ -4,7 +4,7 @@
 			"id": 0,
 			"type": "Button",
 			"label": "B",
-			"position": "(89, 96)",
+			"position": "(80, 80)",
 			"complex_use": "CHIP_INPUT",
 			"state": 1
 		},
@@ -12,7 +12,7 @@
 			"id": 1,
 			"type": "Button",
 			"label": "A",
-			"position": "(89, 192)",
+			"position": "(80, 192)",
 			"complex_use": "CHIP_INPUT",
 			"state": 0
 		},
@@ -20,7 +20,7 @@
 			"id": 2,
 			"type": "Button",
 			"label": "CIN",
-			"position": "(89, 288)",
+			"position": "(80, 288)",
 			"complex_use": "CHIP_INPUT",
 			"state": 0
 		},
@@ -28,13 +28,15 @@
 			"id": 3,
 			"type": "Led",
 			"label": "COUT",
-			"position": "(633.884277, 136.363617)"
+			"position": "(672, 112)",
+			"complex_use": "CHIP_OUTPUT"
 		},
 		{
 			"id": 4,
 			"type": "Led",
 			"label": "SUM",
-			"position": "(633.884277, 215.702454)"
+			"position": "(672, 304)",
+			"complex_use": "CHIP_OUTPUT"
 		}
 	],
 	"chips": [
@@ -65,7 +67,7 @@
 		{
 			"id": 7,
 			"type": "ScriptChip",
-			"position": "(377, 160)",
+			"position": "(416, 192)",
 			"path": "Logic",
 			"properties": [
 				{
@@ -77,7 +79,7 @@
 		{
 			"id": 8,
 			"type": "ScriptChip",
-			"position": "(377, 256)",
+			"position": "(384, 304)",
 			"path": "Logic",
 			"properties": [
 				{
@@ -89,7 +91,7 @@
 		{
 			"id": 9,
 			"type": "ScriptChip",
-			"position": "(505, 96)",
+			"position": "(544, 112)",
 			"path": "Logic",
 			"properties": [
 				{
@@ -104,73 +106,114 @@
 			"from": 0,
 			"from_index": 0,
 			"to": 5,
-			"to_index": 1
+			"to_index": 1,
+			"corners": [
+
+			]
 		},
 		{
 			"from": 1,
 			"from_index": 0,
 			"to": 5,
-			"to_index": 0
+			"to_index": 0,
+			"corners": [
+				"(144, 208)",
+				"(144, 112)"
+			]
 		},
 		{
 			"from": 0,
 			"from_index": 0,
 			"to": 6,
-			"to_index": 1
+			"to_index": 1,
+			"corners": [
+				"(176, 96)",
+				"(176, 192)"
+			]
 		},
 		{
 			"from": 1,
 			"from_index": 0,
 			"to": 6,
-			"to_index": 0
+			"to_index": 0,
+			"corners": [
+
+			]
 		},
 		{
 			"from": 6,
 			"from_index": 0,
 			"to": 7,
-			"to_index": 0
+			"to_index": 0,
+			"corners": [
+
+			]
 		},
 		{
 			"from": 2,
 			"from_index": 0,
 			"to": 7,
-			"to_index": 1
+			"to_index": 1,
+			"corners": [
+				"(320, 304)",
+				"(320, 192)"
+			]
 		},
 		{
 			"from": 6,
 			"from_index": 0,
 			"to": 8,
-			"to_index": 0
+			"to_index": 0,
+			"corners": [
+				"(304, 208)",
+				"(304, 320)"
+			]
 		},
 		{
 			"from": 2,
 			"from_index": 0,
 			"to": 8,
-			"to_index": 1
+			"to_index": 1,
+			"corners": [
+
+			]
 		},
 		{
 			"from": 7,
 			"from_index": 0,
 			"to": 9,
-			"to_index": 0
+			"to_index": 0,
+			"corners": [
+				"(480, 208)",
+				"(480, 128)"
+			]
 		},
 		{
 			"from": 5,
 			"from_index": 0,
 			"to": 9,
-			"to_index": 1
+			"to_index": 1,
+			"corners": [
+
+			]
 		},
 		{
 			"from": 9,
 			"from_index": 0,
 			"to": 3,
-			"to_index": 0
+			"to_index": 0,
+			"corners": [
+
+			]
 		},
 		{
 			"from": 8,
 			"from_index": 0,
 			"to": 4,
-			"to_index": 0
+			"to_index": 0,
+			"corners": [
+
+			]
 		}
 	]
 }

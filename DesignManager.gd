@@ -45,7 +45,7 @@ func save_on_path(path):
 func load_from_path(path, clear_board=true):
 	#print("DesignManager:load_from_path('%s')"%[path])
 	var content = FileCache.load_from(path)
-	
+	var st = OS.get_ticks_msec()
 	if content:
 		if clear_board:
 			board.clear_all()
@@ -55,7 +55,8 @@ func load_from_path(path, clear_board=true):
 		board.read_serialized_content(content)
 		yield(board, "done_loading")
 		camera.center_components(board.components)
-		print("Loaded from path: ", path)
+		var end = OS.get_ticks_msec()
+		print("Loaded from path: ", path, " in ", end-st)
 		
 		set_title_text(path)
 		needs_save = false

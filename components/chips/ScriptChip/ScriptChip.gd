@@ -18,16 +18,14 @@ func load_script(path, force_reload=false):
 	if file_path == path and not force_reload:
 		return
 	file_path = path
-	var full_path = Global.script_chip_full_path2(path)
-	if File.new().file_exists(full_path):
-		chip_behavior = SimChip.new()
-		chip_behavior.connect("on_label_changed", self, "set_label")
-		chip_behavior.connect("on_output_changed", self, "on_behavior_output_changed")
-		if chip_behavior.load_script(path):
-			initialize_connectors()
-		chip_behavior.connect("on_rebuild", self, "initialize_connectors")
+	chip_behavior = SimChip.new()
+	chip_behavior.connect("on_label_changed", self, "set_label")
+	chip_behavior.connect("on_output_changed", self, "on_behavior_output_changed")
+	chip_behavior.connect("on_rebuild", self, "initialize_connectors")
+	if chip_behavior.load_script(path):
+		initialize_connectors()
 	else:
-		push_error("'%s' could not be found"%full_path)
+		push_error("'%s' could not be found"%file_path)
 		MessageSystem.popup.prompt_warning("'%s' script could not be found"%file_path)
 		self.label = "ERROR"
 		return false

@@ -27,10 +27,15 @@ var initial_counter = 5
 
 func load_script(path):
 	file_path = path
-	var full_path = Global.script_chip_full_path2(path)
-	if File.new().file_exists(full_path):
-		var chip_script = ResourceLoader.load(full_path)
-		chip = chip_script.new()
+	if Global.builtin_chips.has(path):
+		#print("has built in ", path)
+		chip = Global.builtin_chips[path].new()
+	else:
+		var full_path = Global.script_chip_full_path2(path)
+		if File.new().file_exists(full_path):
+			var chip_script = ResourceLoader.load(full_path)
+			chip = chip_script.new()
+	if chip:
 		chip.set_label_callback = funcref(self, "set_label")
 		chip.get_input_callback = funcref(self, "get_input_callback")
 		chip.get_input_v_callback = funcref(self, "get_input_v_callback")
@@ -40,7 +45,7 @@ func load_script(path):
 		
 		return rebuild_callback()
 	else:
-		push_error("'%s' could not be found"%full_path)
+		push_error("'%s' could not be found"%Global.script_chip_full_path2(path))
 		self.label = "ERROR"
 		return false
 

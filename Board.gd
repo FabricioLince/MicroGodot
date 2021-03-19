@@ -110,8 +110,9 @@ func read_serialized_content(content):
 			var to_comp = get_by_id(info.to)
 			var to_connector = to_comp.connectors.get_in_connector_by_index(info.to_index)
 			var con = Instantiator.connect_directly(from_connector, to_connector)
-			con.corners_from_info(info)
-			yield(get_tree(), "idle_frame")
+			if con:
+				con.corners_from_info(info)
+				yield(get_tree(), "idle_frame")
 			loading_bar.increment()
 	
 	emit_signal("done_loading")
