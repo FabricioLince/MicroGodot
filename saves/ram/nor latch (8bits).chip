@@ -33,13 +33,13 @@
 			"id": 3,
 			"type": "ComplexChip",
 			"position": "(-96, -160)",
-			"path": "nor latch (4bits).chip"
+			"path": "ram/nor latch (4bits)"
 		},
 		{
 			"id": 4,
 			"type": "ComplexChip",
 			"position": "(-96, -32)",
-			"path": "nor latch (4bits).chip"
+			"path": "ram/nor latch (4bits)"
 		},
 		{
 			"id": 5,

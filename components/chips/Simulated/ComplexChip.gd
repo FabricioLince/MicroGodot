@@ -27,16 +27,21 @@ func _init(tree_):
 
 func load_from_path(path):
 	var full_path = Global.complex_chip_full_path(path)
-	var content = FileCache.load_from(full_path)
-	var all = JSON.parse(content).result
-	var regex = RegEx.new()
-	regex.compile("(?<name>[\\s\\w\\(\\)\\[\\]]+)\\.chip")
-	var mat = regex.search(path)
-	if mat:
-		emit_signal("on_label_changed", mat.get_string("name"))
+	var all = FileCache.get_json(full_path)
+	if all:
+		var regex = RegEx.new()
+		regex.compile("(?<name>[\\s\\w\\(\\)\\[\\]]+)\\.chip")
+		var mat = regex.search(path)
+		if mat:
+			emit_signal("on_label_changed", mat.get_string("name"))
+		else:
+			var pieces = path.split("/")
+			var name = pieces[pieces.size()-1]
+			emit_signal("on_label_changed", name)
+		return load_from_json(all)
 	else:
-		emit_signal("on_label_changed", path)
-	return load_from_json(all)
+		push_error("'%s' could not be found"%full_path)
+		FileCache.add_dependency_error(path)
 
 func load_from_json(all):
 	load_io(all.io)
@@ -157,7 +162,10 @@ func load_inner_connections(con_info_list):
 					chip_connector_size = size
 					break
 				to_index -= size
-			con.slice_end = con.slice_start+chip_connector_size-1
+			if chip_connector_size:
+				con.slice_end = con.slice_start+chip_connector_size-1
+			else: # -- connected chip couldn't be loaded
+				con.slice_end = con.slice_start # -- just so it doesn't break everything
 			
 		elif output_components.has(con_info.to): # -- To Output
 			var o = output_components[con_info.to]

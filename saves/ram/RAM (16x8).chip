@@ -51,25 +51,25 @@
 			"id": 5,
 			"type": "ComplexChip",
 			"position": "(-304, -32)",
-			"path": "RAM (4x8).chip"
+			"path": "ram/RAM (4x8)"
 		},
 		{
 			"id": 6,
 			"type": "ComplexChip",
 			"position": "(-304, 48)",
-			"path": "RAM (4x8).chip"
+			"path": "ram/RAM (4x8)"
 		},
 		{
 			"id": 7,
 			"type": "ComplexChip",
 			"position": "(-304, 128)",
-			"path": "RAM (4x8).chip"
+			"path": "ram/RAM (4x8)"
 		},
 		{
 			"id": 8,
 			"type": "ComplexChip",
 			"position": "(-304, 208)",
-			"path": "RAM (4x8).chip"
+			"path": "ram/RAM (4x8)"
 		},
 		{
 			"id": 9,

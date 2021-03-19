@@ -4,7 +4,7 @@
 			"id": 0,
 			"type": "HexInput",
 			"label": "value",
-			"position": "(-656, -304)",
+			"position": "(-656, -320)",
 			"complex_use": "CHIP_INPUT",
 			"value": 0,
 			"bits": 8,
@@ -14,7 +14,7 @@
 			"id": 1,
 			"type": "Button",
 			"label": "invert",
-			"position": "(-656, -208)",
+			"position": "(-656, -224)",
 			"complex_use": "CHIP_INPUT",
 			"state": 0
 		},

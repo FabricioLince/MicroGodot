@@ -50,7 +50,7 @@
 			"id": 5,
 			"type": "ComplexChip",
 			"position": "(-96, -128)",
-			"path": "8 bit adder"
+			"path": "alu/8 bit adder"
 		},
 		{
 			"id": 6,

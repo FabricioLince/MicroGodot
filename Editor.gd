@@ -32,9 +32,10 @@ func _ready():
 	var _a = get_tree().connect("files_dropped", self, "files_dropped")
 	
 	#Instantiator.spawn_complex_chip("8 bit adder", Vector2(0, 0))
-	#DesignManager.load_from_path("res://saves/testes/bus.chip")
 	#Instantiator.spawn_script_chip("Splitter", Vector2.ZERO)
 	#inverter_chain(0)
+	
+	#DesignManager.load_from_path("res://saves/8 bit adder.chip")
 
 func files_dropped(files: PoolStringArray, _screen: int):
 	DesignManager.load_safe(files[0])

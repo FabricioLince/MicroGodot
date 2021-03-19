@@ -12,16 +12,13 @@ func _process(delta):
 
 func load_script(path):
 	file_path = path
-	var full_path = Global.complex_chip_full_path(path)
-	if File.new().file_exists(full_path):
-		chip_behavior = Behavior.new(get_tree())
-		chip_behavior.connect("on_label_changed", self, "set_label")
-		chip_behavior.connect("on_output_changed", self, "set_output")
-		if chip_behavior.load_from_path(path):
-			initialize_connectors()
+	chip_behavior = Behavior.new(get_tree())
+	chip_behavior.connect("on_label_changed", self, "set_label")
+	chip_behavior.connect("on_output_changed", self, "set_output")
+	if chip_behavior.load_from_path(path):
+		initialize_connectors()
 		#chip_behavior.connect("on_rebuild", self, "initialize_connectors")
 	else:
-		push_error("'%s' could not be found"%full_path)
 		self.label = "ERROR"
 		return false
 

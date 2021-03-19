@@ -1,7 +1,8 @@
 extends Node
 
 signal done_checking(cancel)
-signal done_saving
+signal done_saving()
+signal done_loading(ok)
 
 var file_dialog 
 var design_file_path
@@ -60,8 +61,19 @@ func load_from_path(path, clear_board=true):
 		
 		set_title_text(path)
 		needs_save = false
+		
+		if FileCache.prompt_fix_dependency_errors():
+			print("fixing cache")
+			var all_done = yield(FileCache, "done_fixing")
+			if all_done:
+				print("reloading")
+				load_from_path(design_file_path)
+		
+		emit_signal("done_loading", true)
+		
 	else:
 		MessageSystem.popup.prompt_warning("'%s' couldn't be open"%path)
+		emit_signal("done_loading", false)
 
 func set_board(b):
 	board = b
@@ -95,3 +107,5 @@ func load_safe(path):
 	var cancel = yield(self, "done_checking")
 	if not cancel:
 		load_from_path(path)
+
+

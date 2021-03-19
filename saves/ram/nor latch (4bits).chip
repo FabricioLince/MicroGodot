@@ -33,25 +33,25 @@
 			"id": 3,
 			"type": "ComplexChip",
 			"position": "(-288, -224)",
-			"path": "nor latch"
+			"path": "ram/nor latch"
 		},
 		{
 			"id": 4,
 			"type": "ComplexChip",
 			"position": "(-288, -128)",
-			"path": "nor latch"
+			"path": "ram/nor latch"
 		},
 		{
 			"id": 5,
 			"type": "ComplexChip",
 			"position": "(-288, -32)",
-			"path": "nor latch"
+			"path": "ram/nor latch"
 		},
 		{
 			"id": 6,
 			"type": "ComplexChip",
 			"position": "(-288, -320)",
-			"path": "nor latch"
+			"path": "ram/nor latch"
 		},
 		{
 			"id": 7,

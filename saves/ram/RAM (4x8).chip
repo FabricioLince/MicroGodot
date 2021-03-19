@@ -79,25 +79,25 @@
 			"id": 8,
 			"type": "ComplexChip",
 			"position": "(-224, -160)",
-			"path": "nor latch (8bits).chip"
+			"path": "ram/nor latch (8bits)"
 		},
 		{
 			"id": 9,
 			"type": "ComplexChip",
 			"position": "(-224, -80)",
-			"path": "nor latch (8bits).chip"
+			"path": "ram/nor latch (8bits)"
 		},
 		{
 			"id": 10,
 			"type": "ComplexChip",
 			"position": "(-224, 0)",
-			"path": "nor latch (8bits).chip"
+			"path": "ram/nor latch (8bits)"
 		},
 		{
 			"id": 11,
 			"type": "ComplexChip",
 			"position": "(-224, 80)",
-			"path": "nor latch (8bits).chip"
+			"path": "ram/nor latch (8bits)"
 		},
 		{
 			"id": 12,

@@ -68,13 +68,13 @@
 			"id": 7,
 			"type": "ComplexChip",
 			"position": "(-416, -288)",
-			"path": "ALU (8bits).chip"
+			"path": "alu/ALU (8bits)"
 		},
 		{
 			"id": 8,
 			"type": "ComplexChip",
 			"position": "(-416, -160)",
-			"path": "RAM (16x8).chip"
+			"path": "ram/RAM (16x8)"
 		},
 		{
 			"id": 9,

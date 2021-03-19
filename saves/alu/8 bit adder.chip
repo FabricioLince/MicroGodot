@@ -50,13 +50,13 @@
 			"id": 5,
 			"type": "ComplexChip",
 			"position": "(96, 32)",
-			"path": "4 bit adder"
+			"path": "alu/4 bit adder"
 		},
 		{
 			"id": 6,
 			"type": "ComplexChip",
 			"position": "(96, 160)",
-			"path": "4 bit adder"
+			"path": "alu/4 bit adder"
 		},
 		{
 			"id": 7,

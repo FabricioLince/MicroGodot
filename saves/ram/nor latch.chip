@@ -29,13 +29,13 @@
 			"id": 3,
 			"type": "ComplexChip",
 			"position": "(-48, -208)",
-			"path": "nor"
+			"path": "ram/nor"
 		},
 		{
 			"id": 4,
 			"type": "ComplexChip",
 			"position": "(-48, -16)",
-			"path": "nor"
+			"path": "ram/nor"
 		},
 		{
 			"id": 5,

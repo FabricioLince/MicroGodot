@@ -50,13 +50,13 @@
 			"id": 5,
 			"type": "ComplexChip",
 			"position": "(288, 256)",
-			"path": "full adder"
+			"path": "alu/full adder"
 		},
 		{
 			"id": 6,
 			"type": "ComplexChip",
 			"position": "(288, 160)",
-			"path": "full adder"
+			"path": "alu/full adder"
 		},
 		{
 			"id": 7,
@@ -122,13 +122,13 @@
 			"id": 10,
 			"type": "ComplexChip",
 			"position": "(288, 64)",
-			"path": "full adder"
+			"path": "alu/full adder"
 		},
 		{
 			"id": 11,
 			"type": "ComplexChip",
 			"position": "(288, -32)",
-			"path": "full adder"
+			"path": "alu/full adder"
 		}
 	],
 	"connections": [

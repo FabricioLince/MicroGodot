@@ -43,25 +43,25 @@
 			"id": 0,
 			"type": "ComplexChip",
 			"position": "(160, 32)",
-			"path": "RAM (16x8).chip"
+			"path": "ram/RAM (16x8)"
 		},
 		{
 			"id": 1,
 			"type": "ComplexChip",
 			"position": "(160, 112)",
-			"path": "RAM (16x8).chip"
+			"path": "ram/RAM (16x8)"
 		},
 		{
 			"id": 2,
 			"type": "ComplexChip",
 			"position": "(160, 192)",
-			"path": "RAM (16x8).chip"
+			"path": "ram/RAM (16x8)"
 		},
 		{
 			"id": 3,
 			"type": "ComplexChip",
 			"position": "(160, 272)",
-			"path": "RAM (16x8).chip"
+			"path": "ram/RAM (16x8)"
 		},
 		{
 			"id": 6,

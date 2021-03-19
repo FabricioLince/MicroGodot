@@ -89,7 +89,7 @@
 			"id": 9,
 			"type": "ComplexChip",
 			"position": "(-48, 144)",
-			"path": "counter"
+			"path": "testes/frame counter"
 		}
 	],
 	"connections": [
