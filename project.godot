@@ -39,6 +39,7 @@ Instantiator="*res://singletons/Instantiator.gd"
 ContextMenuCreator="*res://singletons/ContextMenuCreator.gd"
 FileCache="*res://singletons/FileCache.gd"
 MessageSystem="*res://singletons/MessageSystem.gd"
+DesignManager="*res://singletons/DesignManager.gd"
 
 [display]
 

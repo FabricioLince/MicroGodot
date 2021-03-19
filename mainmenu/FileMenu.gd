@@ -1,6 +1,5 @@
 extends MenuButton
 
-var design_manager
 var file_dialog : FileDialog
 
 enum  FileOptions { NEW, OPEN, SAVE, SAVE_AS, QUIT }
@@ -29,13 +28,13 @@ func _ready():
 func on_menu_id_pressed(id):
 	match(id):
 		FileOptions.NEW:
-			check_save_then_do(design_manager, "new_design")
+			check_save_then_do(DesignManager, "new_design")
 		FileOptions.OPEN:
 			check_save_then_do(self, "open_file")
 		FileOptions.SAVE:
-			design_manager.save_design()
+			DesignManager.save_design()
 		FileOptions.SAVE_AS:
-			design_manager.save_design_as()
+			DesignManager.save_design_as()
 		FileOptions.QUIT:
 			check_save_then_do(get_tree(), "quit")
 
@@ -43,10 +42,10 @@ func open_file():
 	file_dialog.prompt_select_file()
 	var path = yield(file_dialog, "done_selecting")
 	if path:
-		design_manager.load_from_path(path)
+		DesignManager.load_from_path(path)
 func check_save_then_do(object, function):
-	design_manager.check_needs_save()
-	var cancel = yield(design_manager, "done_checking")
+	DesignManager.check_needs_save()
+	var cancel = yield(DesignManager, "done_checking")
 	if not cancel:
 		object.call(function)
 

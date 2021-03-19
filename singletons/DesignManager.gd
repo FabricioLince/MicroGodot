@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 signal done_checking(cancel)
 signal done_saving

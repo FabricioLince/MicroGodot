@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://sprites/square.png" type="Texture" id=1]
 [ext_resource path="res://gui/InfoPanel.gd" type="Script" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://mainmenu/FileMenu.gd" type="Script" id=12]
 [ext_resource path="res://icons/trash.png" type="Texture" id=13]
 [ext_resource path="res://Camera.gd" type="Script" id=14]
-[ext_resource path="res://DesignManager.gd" type="Script" id=15]
 [ext_resource path="res://gui/PopupDialog.gd" type="Script" id=16]
 [ext_resource path="res://Selector.gd" type="Script" id=17]
 [ext_resource path="res://SelectionLineGradient.tres" type="Gradient" id=18]
@@ -69,9 +68,6 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/CursorArea"]
 shape = SubResource( 1 )
-
-[node name="DesignManager" type="Node2D" parent="."]
-script = ExtResource( 15 )
 
 [node name="Selector" type="Node2D" parent="."]
 script = ExtResource( 17 )

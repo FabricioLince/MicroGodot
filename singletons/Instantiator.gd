@@ -60,7 +60,6 @@ func spawn_script_chip(path, position):
 func spawn_complex_chip(path, position):
 	var chip = ComplexChip.instance()
 	chip.position = position
-	chip.design_manager = design_manager
 	board.add_child(chip)
 	if path:
 		chip.load_script(path)

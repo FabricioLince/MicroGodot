@@ -4,7 +4,6 @@ onready var InfoPanel = $CanvasLayer/InfoPanel
 onready var Board = $Board
 onready var camera = $Camera2D
 onready var Mouse = $Mouse
-onready var DesignManager = $DesignManager
 onready var Selector = $Selector
 
 func _ready():
@@ -19,7 +18,6 @@ func _ready():
 	
 	Instantiator.board = Board
 	Instantiator.popup_dialog = $CanvasLayer/PopupDialog
-	Instantiator.design_manager = DesignManager
 	
 	DesignManager.file_dialog = $CanvasLayer/FileDialog
 	DesignManager.board = Board
@@ -30,8 +28,6 @@ func _ready():
 	ContextMenuCreator.canvas_layer = $CanvasLayer
 	ContextMenuCreator.selector = Selector
 	ContextMenuCreator.Mouse = Mouse
-	
-	$CanvasLayer.file_menu.design_manager = DesignManager
 	
 	var _a = get_tree().connect("files_dropped", self, "files_dropped")
 	

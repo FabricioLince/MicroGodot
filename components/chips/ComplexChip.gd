@@ -6,8 +6,6 @@ var file_path setget load_script
 var chip_behavior
 var output = [] setget set_output, get_output
 
-var design_manager
-
 func _process(delta):
 	if chip_behavior:
 		chip_behavior.loop(delta)
@@ -81,4 +79,4 @@ func get_properties():
 	]
 
 func open_design():
-	design_manager.load_safe(Global.complex_chip_full_path(file_path))
+	DesignManager.load_safe(Global.complex_chip_full_path(file_path))
