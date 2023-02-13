@@ -1,0 +1,581 @@
+{
+	"io": [
+		{
+			"id": 0,
+			"type": "HexInput",
+			"label": "H",
+			"position": "(-416, -144)",
+			"complex_use": "CHIP_INPUT",
+			"value": 0,
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 1,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(64, 48)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 2,
+			"type": "Button",
+			"label": "manual_in",
+			"position": "(-416, -240)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 3,
+			"type": "HexDisplay",
+			"label": "H",
+			"position": "(-96, 192)",
+			"complex_use": "CHIP_OUTPUT",
+			"bits": 8,
+			"show_value_as": "PURE_VALUE"
+		},
+		{
+			"id": 4,
+			"type": "Button",
+			"label": "reg_out",
+			"position": "(-320, 80)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 5,
+			"type": "Button",
+			"label": "reg_in",
+			"position": "(-320, 160)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 6,
+			"type": "Button",
+			"label": "pc_in",
+			"position": "(-96, -288)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 7,
+			"type": "Button",
+			"label": "rom_out",
+			"position": "(32, -288)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 8,
+			"type": "Button",
+			"label": "alu_out",
+			"position": "(480, 96)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 9,
+			"type": "Button",
+			"label": "b_in",
+			"position": "(112, 192)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 10,
+			"type": "Button",
+			"label": "a_in",
+			"position": "(112, 272)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 11,
+			"type": "Button",
+			"label": "alu_sub",
+			"position": "(320, 96)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 12,
+			"type": "Button",
+			"label": "ram_out",
+			"position": "(736, -336)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 13,
+			"type": "Button",
+			"label": "ram_write",
+			"position": "(608, -336)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		},
+		{
+			"id": 14,
+			"type": "Button",
+			"label": "ram_addr_in",
+			"position": "(480, -336)",
+			"complex_use": "CHIP_INPUT",
+			"state": 0
+		}
+	],
+	"chips": [
+		{
+			"id": 15,
+			"type": "ComplexChip",
+			"position": "(-96, 112)",
+			"path": "ram/register (8bits).chip"
+		},
+		{
+			"id": 16,
+			"type": "ComplexChip",
+			"position": "(-288, -160)",
+			"path": "allow (8bits).chip"
+		},
+		{
+			"id": 17,
+			"type": "ScriptChip",
+			"position": "(128, -144)",
+			"path": "RomReader",
+			"properties": [
+				{
+					"name": "File",
+					"value": "/media/mint/07fa532e-c6b3-4890-bfde-6cd000112e99/mint/Godot/Projetos/MicroGodot/roms/rom01.gd"
+				},
+				{
+					"name": "Choose File",
+					"value": "open_file_dialog"
+				},
+				{
+					"name": "Address Size",
+					"value": 1
+				},
+				{
+					"name": "Data Size",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 18,
+			"type": "ComplexChip",
+			"position": "(32, -160)",
+			"path": "ram/nor latch (8bits).chip"
+		},
+		{
+			"id": 19,
+			"type": "ComplexChip",
+			"position": "(224, -160)",
+			"path": "allow (8bits).chip"
+		},
+		{
+			"id": 20,
+			"type": "ComplexChip",
+			"position": "(272, 192)",
+			"path": "ram/nor latch (8bits).chip"
+		},
+		{
+			"id": 21,
+			"type": "ComplexChip",
+			"position": "(272, 272)",
+			"path": "ram/nor latch (8bits).chip"
+		},
+		{
+			"id": 22,
+			"type": "ComplexChip",
+			"position": "(432, 208)",
+			"path": "alu/ALU (8bits).chip"
+		},
+		{
+			"id": 23,
+			"type": "ComplexChip",
+			"position": "(576, 208)",
+			"path": "allow (8bits).chip"
+		},
+		{
+			"id": 24,
+			"type": "ComplexChip",
+			"position": "(736, -224)",
+			"path": "ram/RAM (16x8).chip"
+		},
+		{
+			"id": 25,
+			"type": "ScriptChip",
+			"position": "(560, -160)",
+			"path": "Splitter",
+			"properties": [
+				{
+					"name": "Size",
+					"value": 1
+				},
+				{
+					"name": "Input Bits",
+					"value": 2
+				},
+				{
+					"name": "Output Bits",
+					"value": 1
+				}
+			]
+		},
+		{
+			"id": 26,
+			"type": "ComplexChip",
+			"position": "(880, -224)",
+			"path": "allow (8bits).chip"
+		},
+		{
+			"id": 27,
+			"type": "ComplexChip",
+			"position": "(656, -144)",
+			"path": "ram/nor latch (4bits).chip"
+		}
+	],
+	"extras": [
+		{
+			"id": 28,
+			"type": "Bus",
+			"position": "(-528, -32)",
+			"bus_end": "(1520, 0)"
+		}
+	],
+	"connections": [
+		{
+			"from": 0,
+			"from_index": 0,
+			"to": 16,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 2,
+			"from_index": 0,
+			"to": 16,
+			"to_index": 8,
+			"corners": [
+				"(-352, -224)",
+				"(-352, -192)"
+			]
+		},
+		{
+			"from": 15,
+			"from_index": 8,
+			"to": 3,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 4,
+			"from_index": 0,
+			"to": 15,
+			"to_index": 9,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 5,
+			"from_index": 0,
+			"to": 15,
+			"to_index": 8,
+			"corners": [
+				"(-272, 176)",
+				"(-272, 112)"
+			]
+		},
+		{
+			"from": 18,
+			"from_index": 0,
+			"to": 17,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 17,
+			"from_index": 0,
+			"to": 19,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 6,
+			"from_index": 0,
+			"to": 18,
+			"to_index": 0,
+			"corners": [
+				"(-48, -272)",
+				"(-48, -144)"
+			]
+		},
+		{
+			"from": 7,
+			"from_index": 0,
+			"to": 19,
+			"to_index": 8,
+			"corners": [
+				"(96, -272)",
+				"(96, -176)",
+				"(176, -176)"
+			]
+		},
+		{
+			"from": 21,
+			"from_index": 0,
+			"to": 22,
+			"to_index": 0,
+			"corners": [
+				"(352, 288)",
+				"(352, 224)"
+			]
+		},
+		{
+			"from": 20,
+			"from_index": 0,
+			"to": 22,
+			"to_index": 8,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 22,
+			"from_index": 0,
+			"to": 23,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 8,
+			"from_index": 0,
+			"to": 23,
+			"to_index": 8,
+			"corners": [
+				"(544, 112)"
+			]
+		},
+		{
+			"from": 9,
+			"from_index": 0,
+			"to": 20,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 10,
+			"from_index": 0,
+			"to": 21,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 11,
+			"from_index": 0,
+			"to": 22,
+			"to_index": 16,
+			"corners": [
+				"(384, 112)",
+				"(384, 192)"
+			]
+		},
+		{
+			"from": 16,
+			"from_index": 0,
+			"to": 28,
+			"to_index": 0,
+			"corners": [
+				"(-192, -144)",
+				"(-192, -32)"
+			]
+		},
+		{
+			"from": 28,
+			"from_index": 0,
+			"to": 1,
+			"to_index": 0,
+			"corners": [
+				"(0, -32)",
+				"(0, 48)"
+			]
+		},
+		{
+			"from": 15,
+			"from_index": 0,
+			"to": 28,
+			"to_index": 0,
+			"corners": [
+				"(-16, 128)",
+				"(-16, -16)"
+			]
+		},
+		{
+			"from": 28,
+			"from_index": 0,
+			"to": 18,
+			"to_index": 1,
+			"corners": [
+				"(-64, -48)",
+				"(-64, -160)"
+			]
+		},
+		{
+			"from": 19,
+			"from_index": 0,
+			"to": 28,
+			"to_index": 0,
+			"corners": [
+				"(320, -144)",
+				"(320, -32)"
+			]
+		},
+		{
+			"from": 28,
+			"from_index": 0,
+			"to": 20,
+			"to_index": 1,
+			"corners": [
+				"(192, -16)",
+				"(192, 192)"
+			]
+		},
+		{
+			"from": 28,
+			"from_index": 0,
+			"to": 21,
+			"to_index": 1,
+			"corners": [
+				"(192, -32)",
+				"(192, 272)"
+			]
+		},
+		{
+			"from": 23,
+			"from_index": 0,
+			"to": 28,
+			"to_index": 0,
+			"corners": [
+				"(640, 224)",
+				"(640, -16)"
+			]
+		},
+		{
+			"from": 28,
+			"from_index": 0,
+			"to": 15,
+			"to_index": 0,
+			"corners": [
+				"(-192, -16)",
+				"(-192, 128)"
+			]
+		},
+		{
+			"from": 28,
+			"from_index": 0,
+			"to": 24,
+			"to_index": 5,
+			"corners": [
+				"(448, -48)",
+				"(448, -240)"
+			]
+		},
+		{
+			"from": 28,
+			"from_index": 0,
+			"to": 25,
+			"to_index": 0,
+			"corners": [
+				"(512, -48)",
+				"(512, -144)"
+			]
+		},
+		{
+			"from": 24,
+			"from_index": 0,
+			"to": 26,
+			"to_index": 0,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 12,
+			"from_index": 0,
+			"to": 26,
+			"to_index": 8,
+			"corners": [
+				"(800, -320)",
+				"(800, -224)"
+			]
+		},
+		{
+			"from": 26,
+			"from_index": 0,
+			"to": 28,
+			"to_index": 0,
+			"corners": [
+				"(944, -208)",
+				"(944, -32)"
+			]
+		},
+		{
+			"from": 13,
+			"from_index": 0,
+			"to": 24,
+			"to_index": 0,
+			"corners": [
+				"(672, -320)",
+				"(672, -208)"
+			]
+		},
+		{
+			"from": 25,
+			"from_index": 0,
+			"to": 27,
+			"to_index": 1,
+			"corners": [
+
+			]
+		},
+		{
+			"from": 27,
+			"from_index": 0,
+			"to": 24,
+			"to_index": 1,
+			"corners": [
+				"(736, -128)",
+				"(640, -224)"
+			]
+		},
+		{
+			"from": 14,
+			"from_index": 0,
+			"to": 27,
+			"to_index": 0,
+			"corners": [
+				"(544, -320)",
+				"(544, -208)",
+				"(608, -208)",
+				"(608, -128)"
+			]
+		}
+	]
+}

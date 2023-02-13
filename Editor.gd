@@ -29,7 +29,7 @@ func _ready():
 	ContextMenuCreator.selector = Selector
 	ContextMenuCreator.Mouse = Mouse
 	
-	var _a = get_tree().connect("files_dropped", self, "files_dropped")
+	get_tree().connect("files_dropped", self, "files_dropped")
 	
 	#Instantiator.spawn_complex_chip("8 bit adder", Vector2(0, 0))
 	#Instantiator.spawn_script_chip("Splitter", Vector2.ZERO)
@@ -40,9 +40,9 @@ func _ready():
 func files_dropped(files: PoolStringArray, _screen: int):
 	DesignManager.load_safe(files[0])
 
-func inverter_chain(amount):
-	var initial_pos = Vector2(-96, 0)
-	var delta = Vector2(256, 0)
+func inverter_chain(amount:int):
+	var initial_pos := Vector2(-96, 0)
+	var delta := Vector2(256, 0)
 	var button = Instantiator.spawn_button("B", initial_pos)
 	var last = button
 	for _i in range(amount):

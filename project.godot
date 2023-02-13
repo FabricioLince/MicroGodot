@@ -41,6 +41,11 @@ FileCache="*res://singletons/FileCache.gd"
 MessageSystem="*res://singletons/MessageSystem.gd"
 DesignManager="*res://singletons/DesignManager.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=false
+
 [display]
 
 window/size/width=1200

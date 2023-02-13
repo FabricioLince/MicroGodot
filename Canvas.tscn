@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://sprites/square.png" type="Texture" id=1]
 [ext_resource path="res://gui/InfoPanel.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://mainmenu/FileMenu.gd" type="Script" id=12]
 [ext_resource path="res://icons/trash.png" type="Texture" id=13]
 [ext_resource path="res://Camera.gd" type="Script" id=14]
+[ext_resource path="res://tests/MouseFollower.gd" type="Script" id=15]
 [ext_resource path="res://gui/PopupDialog.gd" type="Script" id=16]
 [ext_resource path="res://Selector.gd" type="Script" id=17]
 [ext_resource path="res://SelectionLineGradient.tres" type="Gradient" id=18]
@@ -59,7 +60,7 @@ script = ExtResource( 5 )
 [node name="Mouse" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Line2D" type="Line2D" parent="Mouse"]
+[node name="ConnectionCreator" type="Line2D" parent="Mouse"]
 width = 8.0
 script = ExtResource( 7 )
 
@@ -108,30 +109,27 @@ grow_vertical = 2
 rect_min_size = Vector2( 200, 0 )
 theme = ExtResource( 4 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Title" type="PanelContainer" parent="CanvasLayer/InfoPanel"]
 margin_right = 200.0
-margin_bottom = 33.0
+margin_bottom = 42.0
 
 [node name="Label" type="Label" parent="CanvasLayer/InfoPanel/Title"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 193.0
-margin_bottom = 26.0
+margin_bottom = 35.0
 text = "No Title"
 
 [node name="Properties" type="VBoxContainer" parent="CanvasLayer/InfoPanel"]
-margin_top = 37.0
+margin_top = 46.0
 margin_right = 200.0
-margin_bottom = 37.0
+margin_bottom = 46.0
 
 [node name="DeleteButton" type="Button" parent="CanvasLayer/InfoPanel"]
-margin_top = 41.0
+margin_top = 50.0
 margin_right = 200.0
-margin_bottom = 79.0
+margin_bottom = 88.0
 shortcut = SubResource( 4 )
 text = "DELETE"
 icon = ExtResource( 13 )
@@ -162,14 +160,14 @@ __meta__ = {
 
 [node name="MainMenu" type="HBoxContainer" parent="CanvasLayer/TopBar"]
 margin_right = 1200.0
-margin_bottom = 25.0
+margin_bottom = 34.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FileMenu" type="MenuButton" parent="CanvasLayer/TopBar/MainMenu"]
-margin_right = 41.0
-margin_bottom = 25.0
+margin_right = 57.0
+margin_bottom = 34.0
 text = "File"
 script = ExtResource( 12 )
 __meta__ = {
@@ -177,9 +175,9 @@ __meta__ = {
 }
 
 [node name="InsertMenu" type="MenuButton" parent="CanvasLayer/TopBar/MainMenu"]
-margin_left = 45.0
-margin_right = 106.0
-margin_bottom = 25.0
+margin_left = 61.0
+margin_right = 146.0
+margin_bottom = 34.0
 text = "Insert"
 script = ExtResource( 11 )
 __meta__ = {
@@ -187,9 +185,9 @@ __meta__ = {
 }
 
 [node name="HelpMenu" type="MenuButton" parent="CanvasLayer/TopBar/MainMenu"]
-margin_left = 110.0
-margin_right = 156.0
-margin_bottom = 25.0
+margin_left = 150.0
+margin_right = 213.0
+margin_bottom = 34.0
 text = "Help"
 script = ExtResource( 20 )
 __meta__ = {
@@ -206,13 +204,12 @@ rect_min_size = Vector2( 0, 20 )
 [node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
 margin_right = 500.0
 margin_bottom = 461.0
+rect_min_size = Vector2( 150, 52.5 )
 theme = ExtResource( 4 )
 custom_icons/file = ExtResource( 19 )
 resizable = true
 access = 2
 filters = PoolStringArray( "*.chip ; Chip Files" )
-current_dir = "/Users/fabri/OneDrive/Documentos/Godot/Projects/Micro"
-current_path = "/Users/fabri/OneDrive/Documentos/Godot/Projects/Micro/"
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -241,10 +238,12 @@ __meta__ = {
 [node name="InsertPopup" type="PopupMenu" parent="CanvasLayer"]
 margin_right = 20.0
 margin_bottom = 20.0
+theme = ExtResource( 4 )
 
 [node name="ContextMenu" type="PopupMenu" parent="CanvasLayer"]
 margin_right = 20.0
 margin_bottom = 20.0
+theme = ExtResource( 4 )
 
 [node name="LoadingBar" type="CenterContainer" parent="CanvasLayer"]
 visible = false
@@ -252,9 +251,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 23 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureProgress" type="TextureProgress" parent="CanvasLayer/LoadingBar"]
 margin_left = 550.0
@@ -278,6 +274,12 @@ margin_top = 293.0
 margin_right = 624.0
 margin_bottom = 307.0
 text = "Loading"
+
+[node name="MouseFollower" type="Polygon2D" parent="."]
+z_index = 4096
+polygon = PoolVector2Array( 0, -4, 4, 0, 0, 4, -4, 0 )
+script = ExtResource( 15 )
+
 [connection signal="pressed" from="CanvasLayer/InfoPanel/DeleteButton" to="CanvasLayer/InfoPanel" method="_on_DeleteButton_pressed"]
 [connection signal="confirmed" from="CanvasLayer/PopupDialog" to="CanvasLayer/PopupDialog" method="_on_AcceptDialog_confirmed"]
 [connection signal="custom_action" from="CanvasLayer/PopupDialog" to="CanvasLayer/PopupDialog" method="_on_AcceptDialog_custom_action"]

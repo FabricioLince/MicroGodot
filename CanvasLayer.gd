@@ -2,7 +2,8 @@ extends CanvasLayer
 
 enum InputComponents {Button, HexInput}
 enum OutputComponents {Led, HexDisplay}
-enum UtilChips {Inverter, Conversor, Splitter, Counter, Clock, Bus}
+enum UtilChips {Inverter, Conversor, Splitter, Counter, Clock, KeyboardInput, RomReader}
+enum DisplayComponents {AsciiDisplay}
 
 export (Theme) var theme 
 
@@ -15,7 +16,7 @@ onready var info_panel = $InfoPanel
 onready var context_menu = $ContextMenu
 onready var insert_popup = $InsertPopup
 
-var insert_menu_items setget set_none, get_insert_menu_items
+var insert_menu_items : Array setget set_none, get_insert_menu_items
 func set_none(_a): pass
 
 func _ready():
@@ -29,7 +30,7 @@ func set_theme_on_children(node:Control):
 	for c in node.get_children():
 		set_theme_on_children(c)
 
-func get_insert_menu_items():
+func get_insert_menu_items() -> Array:
 	if not insert_menu_items:
 		config_insert_menu_items()
 	return insert_menu_items
@@ -68,6 +69,18 @@ func config_insert_menu_items():
 				id = 2
 			}],
 			callback = {target = self, method = "on_chip_menu_pressed"}
+		},
+		{
+			label = "Display",
+			kind = "submenu",
+			items = [],
+			callback = {target = self, method = "on_display_item_pressed"}
+		},
+		{
+			label = "Bus",
+			kind = "item",
+			id = 3,
+			callback = {target = self, method = "create_bus"}
 		}
 	]
 	for i in range(InputComponents.size()):
@@ -94,13 +107,19 @@ func config_insert_menu_items():
 			id = i,
 			kind = "item"
 		})
+	for i in range(DisplayComponents.size()):
+		insert_menu_items[3].items.append({
+			label = DisplayComponents.keys()[i],
+			id = i,
+			kind = "item"
+		})
 
 
 func on_input_pressed(id):
 	#print("Pressed ", InputComponents.keys()[id])
 	match(id):
 		InputComponents.Button:
-			var b = Instantiator.spawn_button("B", Vector2.ZERO)
+			var b := Instantiator.spawn_button("B", Vector2.ZERO)
 			Mouse.holding = b
 		InputComponents.HexInput:
 			var h = Instantiator.spawn_hexinput("H", Vector2.ZERO)
@@ -137,11 +156,14 @@ func on_util_chip_pressed(id):
 		UtilChips.Clock:
 			var c = Instantiator.spawn_script_chip("Clock", get_global_mouse_position())
 			Mouse.holding = c
-		UtilChips.Bus:
-			var c = Instantiator.spawn_script_chip("Bus", get_global_mouse_position())
+		UtilChips.KeyboardInput:
+			var c = Instantiator.spawn_script_chip("KeyboardInput", get_global_mouse_position())
+			Mouse.holding = c
+		UtilChips.RomReader:
+			var c = Instantiator.spawn_script_chip("RomReader", get_global_mouse_position())
 			Mouse.holding = c
 
-func on_chip_menu_pressed(id):
+func on_chip_menu_pressed(id:int):
 	#print("chip menu ", id)
 	if id == 2:
 		file_dialog.prompt_select_file()
@@ -154,12 +176,12 @@ func on_chip_menu_pressed(id):
 func get_global_mouse_position(): return Vector2.ZERO
 
 
-func prepare_popup(popup_menu:PopupMenu, items):
+func prepare_popup(popup_menu:PopupMenu, items:Array):
 	popup_menu.clear()
 	for item in items:
 		match item.kind:
 			"submenu":
-				var submenu = PopupMenu.new()
+				var submenu := PopupMenu.new()
 				prepare_popup(submenu, item.items)
 				popup_menu.add_child(submenu)
 				popup_menu.add_submenu_item(item.label, submenu.name)
@@ -168,12 +190,20 @@ func prepare_popup(popup_menu:PopupMenu, items):
 					submenu.connect("id_pressed", callback.target, callback.method)
 			"item":
 				popup_menu.add_item(item.label, item.id)
+				if item.get("callback"):
+					popup_menu.connect("id_pressed", self, "_on_item_pressed", [item])
 
-func show_insert_menu(position):
+func _on_item_pressed(id_pressed:int, item:Dictionary):
+	if id_pressed == item.id:
+		item.callback.target.call(item.callback.method)
+
+func show_insert_menu(position:Vector2):
 	$InsertPopup.rect_position = position
 	$InsertPopup.popup()
 
-func show_context_menu(position, context_menu_data):
+func show_context_menu(position:Vector2, context_menu_data:Dictionary):
+	if context_menu_data.empty() or context_menu_data.items.empty():
+		return
 	context_menu.rect_position = position
 	var menu = context_menu_data
 	context_menu.connect("id_pressed", 
@@ -185,3 +215,13 @@ func show_context_menu(position, context_menu_data):
 func on_hide_context_menu():
 	for c in context_menu.get_signal_connection_list("id_pressed"):
 		context_menu.disconnect("id_pressed", c.target, c.method)
+
+func create_bus():
+	var bus = Instantiator.spawn_bus()
+	Mouse.holding = bus
+
+func on_display_item_pressed(id:int):
+	match id:
+		DisplayComponents.AsciiDisplay:
+			var c = Instantiator.spawn_ascii_display()
+			Mouse.holding = c

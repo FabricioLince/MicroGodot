@@ -6,15 +6,16 @@ var selector
 var canvas_layer
 
 onready var cursor = $CursorArea
-onready var connection_creator = $Line2D
-var click_infos = []
+onready var connection_creator = $ConnectionCreator
+var click_infos := []
 
-var down_on = {}
+var down_on := {}
 
 var holding = null
 
 func _process(_delta):
-	if holding:
+	cursor.position = get_global_mouse_position()
+	if is_instance_valid(holding):
 		holding.set_position(get_global_mouse_position())
 	if click_infos.size() > 0:
 		# only process the last click info (higher priority)
@@ -33,8 +34,8 @@ func process_click_info(info):
 		# button up event:
 		var down = down_on[info.event.button_index]
 		down_on.erase(info.event.button_index)
-		var a = down.object; if a: a = a.name
-		var b = info.object; if b: b = b.name
+#		var a = down.object; if a: a = a.name
+#		var b = info.object; if b: b = b.name
 		#print(a, " == ", b)
 		var delta = down.event.position - info.event.position
 		if down.object == info.object:
@@ -49,7 +50,7 @@ func process_click_info(info):
 		
 
 func process_simple_click(info):
-	if holding:
+	if is_instance_valid(holding):
 		selector.select_only(holding)
 		if holding.has_method("on_mouse_drop"):
 			holding.on_mouse_drop(get_global_mouse_position())
@@ -60,6 +61,9 @@ func process_simple_click(info):
 			BUTTON_LEFT:
 				if info.object and info.object.get("is_connector"):
 					connection_creator.end(info.object)
+				elif info.object and info.object.get("is_bus"):
+					connection_creator.add_corner(info.global_position)
+					connection_creator.end(info.object.bus)
 				else:
 					connection_creator.add_corner(info.global_position)
 			BUTTON_RIGHT:
@@ -104,9 +108,12 @@ func click_on_object(info):
 				selector.select_only(info.object)
 			
 		BUTTON_RIGHT:
-			if not selector.is_selected(info.object):
-				selector.select_only(info.object)
-			ContextMenuCreator.show_context_menu_for_selection(info.event.position)
+			if selector.is_selectable(info.object):
+				if not selector.is_selected(info.object):
+					selector.select_only(info.object)
+				ContextMenuCreator.show_context_menu_for_selection(info.event.position)
+			else:
+				ContextMenuCreator.show_context_menu_for(info.object, info.event.position)
 
 # drag = moving the mouse with a button down
 func process_drag(motion_event):
@@ -133,9 +140,9 @@ func _unhandled_input(event):
 		if Keyboard.is_pressed(KEY_SHIFT):
 			zoom_factor = 1.02
 		if event.button_index == BUTTON_WHEEL_DOWN:
-			camera.apply_zoom(zoom_factor, event.position)
+			camera.apply_zoom(zoom_factor, Global.event_pos_to_global_pos(event.position))
 		elif event.button_index == BUTTON_WHEEL_UP:
-			camera.apply_zoom(1.0/zoom_factor, event.position)
+			camera.apply_zoom(1.0/zoom_factor, Global.event_pos_to_global_pos(event.position))
 		else:
 			calc_click(event)
 	elif event is InputEventMouseMotion:
@@ -152,9 +159,9 @@ func calc_motion(event):
 		camera.move(-event.relative)
 
 func calc_click(event):
-	cursor.position = get_global_mouse_position()
-	yield(get_tree(), "physics_frame")
-	yield(get_tree(), "physics_frame")
+	
+#	yield(get_tree(), "physics_frame")
+#	yield(get_tree(), "physics_frame")
 	append_click(event, null)
 	for a in cursor.get_overlapping_areas():
 		append_click(event, a.get_parent())

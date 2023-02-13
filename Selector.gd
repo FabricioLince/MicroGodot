@@ -10,14 +10,14 @@ onready var line = $Line2D
 
 onready var shape = $Area2D/CollisionShape2D.shape
 
-var selected_items = []
-var object_group
+var selected_items := []
+var object_group : Group
 
-var a = Vector2.ZERO setget set_a
+var a := Vector2.ZERO setget set_a
 func set_a(na):
 	a = na
 	update_selector()
-var b = Vector2.ZERO setget set_b
+var b := Vector2.ZERO setget set_b
 func set_b(nb):
 	b = nb
 	update_selector()
@@ -60,7 +60,7 @@ func done_selecting():
 
 func deselect_all():
 	while selected_items.size() > 0:
-		if selected_items[0]:
+		if is_instance_valid(selected_items[0]):
 			deselect(selected_items[0], false)
 		else: 
 			selected_items.remove(0)
@@ -91,17 +91,17 @@ func select_only(item):
 		deselect_all()
 		select(item)
 
-func is_selected(item):
+func is_selected(item) -> bool:
 	return selected_items.has(item)
-func is_selectable(item):
+func is_selectable(item) -> bool:
 	return item.get("is_selectable")
 func start_selecting(initial_pos):
 	self.a = initial_pos
 	self.b = initial_pos
-func is_selecting():
+func is_selecting() -> bool:
 	return a.distance_squared_to(b) > 4
 
-func on_key_delete():
+func on_key_delete(_pressed:=true):
 	if selected_items.size() > 0:
 		var descr = null
 		if selected_items[0].has_method("description"):
@@ -120,20 +120,20 @@ func on_key_delete():
 			deselect_all()
 
 func update_info_for_selection():
-	if object_group:
+	if is_instance_valid(object_group):
 		object_group.remove_connections()
 	if selected_items.size() == 0:
 		info_panel.hide_info()
 	else:
 		object_group = Group.new()
-		var center = Vector2.ZERO
+		var center := Vector2.ZERO
 		for o in selected_items:
-			center += o.position
+			center += o.global_position
 			#print(o, " -> ", o.position)
 		center /= selected_items.size()
 		#print("center: ", center)
 		for o in selected_items:
-			object_group.add_object(o, center - o.position)
+			object_group.add_object(o, center - o.global_position)
 		if selected_items.size() == 1:
 			info_panel.show_info_for(selected_items[0])
 		else:
