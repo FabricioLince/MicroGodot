@@ -1,14 +1,14 @@
 extends "res://components/chips/ScriptChip/ScriptChipBase.gd"
 
 #-- properties
-var input_prop = create_property("from", PropertyKind.SIGNAL, Signal.Kind.UNDEFINED)
-var output_prop = create_property("to", PropertyKind.SIGNAL, Signal.Kind.LOW)
+var input_prop := create_property("from", PropertyKind.SIGNAL, Signal.Kind.UNDEFINED)
+var output_prop := create_property("to", PropertyKind.SIGNAL, Signal.Kind.LOW)
 
 #-- input/output especification
-var input_spec = {"in" : 1}
-var output_spec = {out = 1}
+var input_spec := {"in" : 1}
+var output_spec := {out = 1}
 
-func signal_name(sig):
+func signal_name(sig:int):
 	match(sig):
 		Signal.Kind.UNDEFINED:
 			return "u"
@@ -26,7 +26,7 @@ func on_load():
 
 #-- called when gate input changes
 func on_set_input():
-	var input = get_input()
+	var input := get_input()
 	if input["in"] == input_prop.signal:
 		set_output({out = output_prop.signal})
 	else:
@@ -36,5 +36,5 @@ func on_property_changed(_prop):
 	rename()
 	on_set_input()
 
-func description():
+func description() -> String:
 	return "Conversor"

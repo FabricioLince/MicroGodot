@@ -1,14 +1,14 @@
 extends "res://components/chips/ScriptChip/ScriptChipBase.gd"
 
 const sizes = [4, 8, 12, 16]
-var io_sizes = [1, 4]
-var size_prop = create_property("Size", PropertyKind.LIST, 0, {items=sizes})
-var input_prop = create_property("Input Bits", PropertyKind.LIST, 1, {items=io_sizes})
-var output_prop = create_property("Output Bits", PropertyKind.LIST, 0, {items=io_sizes})
+var io_sizes := [1, 4]
+var size_prop := create_property("Size", PropertyKind.LIST, 0, {items=sizes})
+var input_prop := create_property("Input Bits", PropertyKind.LIST, 1, {items=io_sizes})
+var output_prop := create_property("Output Bits", PropertyKind.LIST, 0, {items=io_sizes})
 
 #-- input/output especification
-var input_spec = {"in" : 4}
-var output_spec = {o0=1, o1=1, o2=1, o3=1}
+var input_spec := {"in" : 4}
+var output_spec := {o0=1, o1=1, o2=1, o3=1}
 
 #-- called when this gate is instantiated
 func on_load():
