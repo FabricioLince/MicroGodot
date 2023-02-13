@@ -1,15 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://components/Component.tscn" type="PackedScene" id=1]
-[ext_resource path="res://fonts/fff-10.tres" type="DynamicFont" id=2]
 [ext_resource path="res://components/input/HexInput.gd" type="Script" id=3]
-[ext_resource path="res://components/input/HexDialButton.gd" type="Script" id=4]
-[ext_resource path="res://components/input/ButtonFitter.gd" type="Script" id=5]
 [ext_resource path="res://components/sprites/up.png" type="Texture" id=6]
 [ext_resource path="res://components/sprites/square.png" type="Texture" id=7]
+[ext_resource path="res://fonts/fff-forward.regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://components/input/HexInputDigits.gd" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 16.1795 )
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 8 )
 
 [node name="HexInput" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -18,178 +18,82 @@ script = ExtResource( 3 )
 margin_top = 47.0
 margin_bottom = 61.0
 
-[node name="Sprite" type="Sprite" parent="." index="2"]
-modulate = Color( 0.141176, 0.141176, 0.141176, 1 )
-position = Vector2( 0, 9.68575e-08 )
-scale = Vector2( 1, 0.351563 )
+[node name="Control" type="HBoxContainer" parent="." index="2"]
+margin_left = -14.0
+margin_top = -32.0
+margin_right = 22.0
+margin_bottom = 32.0
+grow_horizontal = 0
+rect_min_size = Vector2( 36, 64 )
+mouse_filter = 2
+alignment = 2
+script = ExtResource( 9 )
+
+[node name="Signal" type="Control" parent="Control" index="0"]
+visible = false
+margin_right = 28.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 28, 64 )
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Signal" index="0"]
+margin_right = 32.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 32, 64 )
 texture = ExtResource( 7 )
 
-[node name="ValueLabel" type="Label" parent="." index="3"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -7.0
-margin_right = 20.0
-margin_bottom = 7.0
-custom_fonts/font = ExtResource( 2 )
-text = "0"
+[node name="Label" type="Label" parent="Control/Signal" index="1"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 35.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 32, 64 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "+"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="ButtonFitter" type="Node2D" parent="." index="6"]
-script = ExtResource( 5 )
+[node name="Unit" type="Control" parent="Control" index="1"]
+margin_right = 36.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 36, 64 )
+mouse_filter = 2
 
-[node name="1000s" type="Node2D" parent="ButtonFitter" index="0"]
-visible = false
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Unit" index="0"]
+margin_right = 40.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 40, 64 )
+texture = ExtResource( 7 )
 
-[node name="Up" type="Node2D" parent="ButtonFitter/1000s" index="0"]
-position = Vector2( 0, -27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-step = 4096
+[node name="Label" type="Label" parent="Control/Unit" index="1"]
+margin_top = 4.0
+margin_right = 40.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 40, 64 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "F"
+align = 1
+valign = 1
 
-[node name="Area2D" type="Area2D" parent="ButtonFitter/1000s/Up" index="0"]
+[node name="UpButton" type="Button" parent="Control/Unit" index="2"]
+margin_left = -7.0
+margin_top = -23.0
+margin_right = 47.0
+margin_bottom = 4.0
+icon = ExtResource( 6 )
+flat = true
+icon_align = 1
+expand_icon = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/1000s/Up/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/1000s/Up" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-
-[node name="Down" type="Node2D" parent="ButtonFitter/1000s" index="1"]
-position = Vector2( 0, 27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-step = -4096
-
-[node name="Area2D" type="Area2D" parent="ButtonFitter/1000s/Down" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/1000s/Down/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/1000s/Down" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-flip_v = true
-
-[node name="100s" type="Node2D" parent="ButtonFitter" index="1"]
-visible = false
-
-[node name="Up" type="Node2D" parent="ButtonFitter/100s" index="0"]
-position = Vector2( 0, -27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-step = 256
-
-[node name="Area2D" type="Area2D" parent="ButtonFitter/100s/Up" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/100s/Up/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/100s/Up" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-
-[node name="Down" type="Node2D" parent="ButtonFitter/100s" index="1"]
-position = Vector2( 0, 27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-step = -256
-
-[node name="Area2D" type="Area2D" parent="ButtonFitter/100s/Down" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/100s/Down/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/100s/Down" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-flip_v = true
-
-[node name="10s" type="Node2D" parent="ButtonFitter" index="2"]
-visible = false
-
-[node name="Up" type="Node2D" parent="ButtonFitter/10s" index="0"]
-position = Vector2( 0, -27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-step = 16
-
-[node name="Area2D" type="Area2D" parent="ButtonFitter/10s/Up" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/10s/Up/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/10s/Up" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-
-[node name="Down" type="Node2D" parent="ButtonFitter/10s" index="1"]
-position = Vector2( 0, 27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-step = -16
-
-[node name="Area2D" type="Area2D" parent="ButtonFitter/10s/Down" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/10s/Down/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/10s/Down" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-flip_v = true
-
-[node name="1s" type="Node2D" parent="ButtonFitter" index="3"]
-
-[node name="Up" type="Node2D" parent="ButtonFitter/1s" index="0"]
-position = Vector2( 0, -27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Area2D" type="Area2D" parent="ButtonFitter/1s/Up" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/1s/Up/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/1s/Up" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-
-[node name="Down" type="Node2D" parent="ButtonFitter/1s" index="1"]
-position = Vector2( 0, 27.75 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-step = -1
-
-[node name="Area2D" type="Area2D" parent="ButtonFitter/1s/Down" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonFitter/1s/Down/Area2D" index="0"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="ButtonFitter/1s/Down" index="1"]
-z_index = 1
-texture = ExtResource( 6 )
-flip_v = true
+[node name="DownButton" type="Button" parent="Control/Unit" index="3"]
+margin_left = -6.0
+margin_top = 87.0
+margin_right = 48.0
+margin_bottom = 114.0
+rect_scale = Vector2( 1, -1 )
+icon = ExtResource( 6 )
+flat = true
+icon_align = 1
+expand_icon = true

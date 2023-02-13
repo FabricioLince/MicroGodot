@@ -1,6 +1,6 @@
 extends Node2D
 
-export (float) var min_height = 0
+export (float) var min_height = 0.0
 
 func set_size(new_size):
 	#print("setting size for %s = %s"%[description(), str(new_size)])
