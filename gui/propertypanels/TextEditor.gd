@@ -3,13 +3,13 @@ extends PanelContainer
 signal text_changed(new_text)
 signal hex_changed(new_hex)
 
-var text = "" setget set_text
-func set_text(t):
+var text := "" setget set_text
+func set_text(t:String):
 	text = t
 	$Container/LineEdit.text = t
 
-var label setget set_label
-func set_label(l):
+var label : String setget set_label
+func set_label(l:String):
 	$Container/Label.text = l
 	label = l
 
@@ -18,7 +18,12 @@ func set_value_as_hex(v):
 	self.text = "%X"%v
 func get_value_as_hex():
 	if text.begins_with("-"):
-		return ("-0x"+text.substr(1)).hex_to_int()
+		var t := text.substr(1)
+		if not t.is_valid_hex_number():
+			return 0
+		return ("-0x"+t).hex_to_int()
+	if not text.is_valid_hex_number():
+		return 0
 	return ("0x"+text).hex_to_int()
 
 func _on_LineEdit_text_changed(new_text):

@@ -2,14 +2,14 @@ extends Node
 
 signal done_fixing(all_done)
 
-var cache = {}
+var cache := {}
 
-func load_from(path):
+func load_from(path:String):
 	if cache.has(path):
 		#print("cache hit ", path)
 		return cache[path]
 	#print("cache miss ", path)
-	var file = File.new()
+	var file := File.new()
 	file.open(path, File.READ)
 	if file.is_open():
 		var content = file.get_as_text()
@@ -17,8 +17,8 @@ func load_from(path):
 		cache[path] = content
 		return content
 
-func save_on(path, content):
-	var file = File.new()
+func save_on(path:String, content:String):
+	var file := File.new()
 	file.open(path, File.WRITE)
 	if file.is_open():
 		file.store_string(content)
@@ -26,8 +26,8 @@ func save_on(path, content):
 		cache[path] = content
 		return true
 
-func fix_dependency_on_cache(old_path, new_path):
-	var new_cache = {}
+func fix_dependency_on_cache(old_path:String, new_path:String):
+	var new_cache := {}
 	for file_path in cache:
 		var all = get_json(file_path)
 		for chip in all.chips:
@@ -39,14 +39,14 @@ func fix_dependency_on_cache(old_path, new_path):
 	for file_path in new_cache:
 		save_on(file_path, new_cache[file_path])
 
-func get_json(path):
+func get_json(path:String):
 	var content = load_from(path)
 	if content:
 		return JSON.parse(content).result
 
-var dependency_errors = []
+var dependency_errors := []
 
-func add_dependency_error(path):
+func add_dependency_error(path:String):
 	if not dependency_errors.has(path):
 		dependency_errors.append(path)
 

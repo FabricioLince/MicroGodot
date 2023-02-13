@@ -1,20 +1,25 @@
 extends Node2D
 
-onready var Group = preload("res://scripts/ObjectGroup.gd")
+const Group = preload("res://scripts/ObjectGroup.gd")
 
 var canvas_layer
 var selector
 var Mouse
 
-func show_insert_menu(position):
+func show_insert_menu(position:Vector2):
 	canvas_layer.show_insert_menu(position)
 
-func show_context_menu_for_selection(position):
-	if selector.selected_items.size() == 1:
+func show_context_menu_for_selection(position:Vector2):
+	if selector.selected_items.empty():
+		push_error("Tried to show context menu for empty selection")
+	elif selector.selected_items.size() == 1:
 		var object = selector.selected_items[0]
-		canvas_layer.show_context_menu(position, get_object_context_menu(object))
+		show_context_menu_for(object, position)
 	else:
 		canvas_layer.show_context_menu(position, get_group_context_menu(position))
+
+func show_context_menu_for(object, position:Vector2):
+	canvas_layer.show_context_menu(position, get_object_context_menu(object))
 
 func get_group_context_menu(origin):
 	return {
@@ -27,6 +32,13 @@ func get_group_context_menu(origin):
 	}
 
 func get_object_context_menu(object):
+	if object.get("is_connection") or object.get("is_connection_corner"):
+		return {
+			items = [context_item("Delete", 1)],
+			callback = {target = self, method = "on_object_context_menu", args=[object]},
+		}
+	if object.get("is_connector"):
+		return {}
 	return {
 		items = [ context_item("Duplicate", 0), context_item("Delete", 1) ],
 		callback = {target = self, method = "on_object_context_menu", args=[object]},
@@ -40,7 +52,10 @@ func context_item(label_, id_):
 	}
 
 func on_object_context_menu(item_id, object):
-	print("Context menu for %s = %s"%[str(object.description()), str(item_id)])
+	if object.has_method("description"):
+		print("Context menu for %s = %s"%[str(object.description()), str(item_id)])
+	else:
+		print("Context menu for %s = %s"%[str(object), str(item_id)])
 	match item_id:
 		0:
 			var copy = Instantiator.spawn_component_from_info(object.get_info())

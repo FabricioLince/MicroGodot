@@ -6,16 +6,16 @@ const DropDown = preload("res://gui/propertypanels/DropDown.tscn")
 const ButtonPanel = preload("res://gui/propertypanels/Button.tscn")
 const HexEditor = preload("res://gui/propertypanels/HexEditor.tscn")
 
-var showing_for = null
-var panels = []
+var showing_for : Object = null
+var panels := []
 
 func _process(_delta):
-	if showing_for == null or showing_for.get("valid") == false:
+	if not is_instance_valid(showing_for) or showing_for.get("valid") == false:
 		hide_info()
 
 func hide_info():
 	busy = true # to prevent addition of panels while the old ones are being deleted
-	if showing_for and showing_for.has_signal("update_info_panel"):
+	if is_instance_valid(showing_for) and showing_for.has_signal("update_info_panel"):
 		showing_for.disconnect("update_info_panel", self, "show_info_for")
 	showing_for = null
 	for p in $Properties.get_children():
@@ -28,7 +28,7 @@ func hide_info():
 	yield(get_tree(), "idle_frame")
 	busy = false
 
-var busy = false
+var busy := false
 func show_info_for(object):
 	if showing_for or panels.size() > 0:
 		hide_info()
@@ -110,7 +110,7 @@ func _on_property_changed(value, name):
 		#push_warning("shouldn't happen but is happening :(")
 
 
-func create_toggle(label, property_name):
+func create_toggle(label:String, property_name:String):
 	var toggle = raw_panel(Toggle, label)
 	toggle.state = get_property(property_name)
 	toggle.connect("state_changed", self, "_on_property_changed", [property_name])
@@ -142,8 +142,8 @@ func create_button(label, callback):
 	button.callback = callback
 	return button
 
-func raw_panel(Scene, label=null):
-	var panel = Scene.instance()
+func raw_panel(Scene:PackedScene, label:="") -> Node:
+	var panel := Scene.instance()
 	$Properties.add_child(panel)
 	panels.append(panel)
 	if label:

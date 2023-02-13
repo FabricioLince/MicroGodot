@@ -8,7 +8,8 @@ var count = 0.0 setget set_count
 func set_total(total_):
 	total = float(total_)
 	count = 0.0
-	show()
+	if total > 0:
+		show()
 
 func increment():
 	set_count(count+1)

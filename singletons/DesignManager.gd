@@ -43,10 +43,10 @@ func save_on_path(path):
 		print("error saving ", design_file_path)
 	emit_signal("done_saving")
 
-func load_from_path(path, clear_board=true):
+func load_from_path(path:String, clear_board:=true):
 	#print("DesignManager:load_from_path('%s')"%[path])
 	var content = FileCache.load_from(path)
-	var st = OS.get_ticks_msec()
+	var st := OS.get_ticks_msec()
 	if content:
 		if clear_board:
 			board.clear_all()
@@ -57,7 +57,7 @@ func load_from_path(path, clear_board=true):
 		yield(board, "done_loading")
 		camera.center_components(board.components)
 		var end = OS.get_ticks_msec()
-		print("Loaded from path: ", path, " in ", end-st)
+		print("Loaded from path: %s in %d ms"%[path, end-st])
 		
 		set_title_text(path)
 		needs_save = false
@@ -69,6 +69,17 @@ func load_from_path(path, clear_board=true):
 				print("reloading")
 				load_from_path(design_file_path)
 		
+		yield(get_tree(), "idle_frame")
+		
+		for c in board.connections:
+			c.force_next()
+			c.line.default_color = Color.coral
+		
+		for c in board.components:
+			if c.has_method("force_next"):
+				c.force_next()
+			if c.has_method("force_output"):
+				c.call_deferred("force_output")
 		emit_signal("done_loading", true)
 		
 	else:

@@ -3,8 +3,8 @@ extends FileDialog
 signal done_selecting(path)
 
 func _ready():
-	var _a = connect("file_selected", self, "_on_select_file")
-	_a = connect("hide", self, "_on_select_file", [null])
+	connect("file_selected", self, "_on_select_file")
+	connect("hide", self, "_on_select_file", [null])
 
 func prompt_save_file():
 	mode = FileDialog.MODE_SAVE_FILE
@@ -21,8 +21,8 @@ func show_up():
 	invalidate()
 
 var dir = null
-var enforce = true
-var basic_path = Global.main_path+"/saves"
+var enforce := true
+var basic_path := Global.main_path+"/saves"
 func _process(_delta):
 	if dir == null:
 		current_dir = basic_path
